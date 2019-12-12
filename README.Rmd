@@ -7,7 +7,6 @@ output: github_document
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE, comment = "#>", fig.path = "man/figures/README-", 
-  fig.width = 7, fig.height = 4, dev = "CairoPNG", dpi = 150, out.width = "100%",
   message = FALSE, warning = FALSE, error = FALSE
 )
 library(shinyaccess)

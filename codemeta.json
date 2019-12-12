@@ -1,0 +1,71 @@
+{
+  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@type": "SoftwareSourceCode",
+  "identifier": "shinyaccess",
+  "description": "Provides functions and other resources for enhancing web accessibility in Shiny apps.",
+  "name": "shinyaccess: Web Accessibility in Shiny",
+  "codeRepository": "https://github.com/leonawicz/shinyaccess",
+  "issueTracker": "https://github.com/leonawicz/shinyaccess/issues",
+  "license": "https://spdx.org/licenses/MIT",
+  "version": "0.0.0.9000",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "version": "3.6.1",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 3.6.1 (2019-07-05)",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "First",
+      "familyName": "Last",
+      "email": "first.last@example.com",
+      "@id": "https://orcid.org/YOUR-ORCID-ID"
+    }
+  ],
+  "contributor": {},
+  "copyrightHolder": {},
+  "funder": {},
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "First",
+      "familyName": "Last",
+      "email": "first.last@example.com",
+      "@id": "https://orcid.org/YOUR-ORCID-ID"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "covr",
+      "name": "covr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=covr"
+    }
+  ],
+  "softwareRequirements": [],
+  "releaseNotes": "https://github.com/leonawicz/shinyaccess/blob/master/NEWS.md",
+  "readme": "https://github.com/leonawicz/shinyaccess/blob/master/README.md",
+  "fileSize": "10.53KB",
+  "contIntegration": ["https://travis-ci.org/ropensci/shinyaccess", "https://ci.appveyor.com/project/leonawicz/shinyaccess", "https://codecov.io/gh/ropensci/shinyaccess?branch=master"],
+  "developmentStatus": "http://www.repostatus.org/#active"
+}
