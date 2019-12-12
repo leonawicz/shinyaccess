@@ -19,7 +19,6 @@ Status](https://ci.appveyor.com/api/projects/status/github/ropensci/shinyaccess?
 [![Codecov test
 coverage](https://codecov.io/gh/ropensci/shinyaccess/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/shinyaccess?branch=master)
 
-[![](https://badges.ropensci.org/342_status.svg)](https://github.com/ropensci/onboarding/issues/342)
 [![CRAN
 status](http://www.r-pkg.org/badges/version/shinyaccess)](https://cran.r-project.org/package=shinyaccess)
 [![CRAN RStudio mirror
