@@ -1,0 +1,14 @@
+url: http://leonawicz.github.io/shinyaccess
+
+template:
+  params:
+    ganalytics: UA-_ENTER_GOOGLE_ANALYTICS_TRACKING_ID_HERE_
+
+authors:
+  Matthew Leonawicz:
+    href: http://leonawicz.github.io/
+
+navbar:
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/leonawicz/shinyaccess

@@ -1,0 +1,19 @@
+Package: shinyaccess
+Title: Web Accessibility in Shiny
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "First",
+           family = "Last",
+           role = c("aut", "cre"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Provides functions and other resources for enhancing web accessibility in Shiny apps.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/leonawicz/shinyaccess
+BugReports: https://github.com/leonawicz/shinyaccess/issues
+Suggests: 
+    testthat,
+    covr
+RoxygenNote: 7.0.2
