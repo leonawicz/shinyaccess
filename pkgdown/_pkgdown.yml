@@ -3,6 +3,10 @@ url: https://leonawicz.github.io/shinyaccess
 authors:
   Matthew Leonawicz:
     href: https://github.com/leonawicz
+  Melissa Utomo:
+  E Source:
+    href: https://www.esource.com/
+    html: <img src="https://raw.githubusercontent.com/leonawicz/leonawicz.github.io/master/assets/img/esource_logo.png" height="24" />
 
 navbar:
   right:

@@ -5,8 +5,8 @@
 
 **Authors:** [Matthew Leonawicz](https://github.com/leonawicz)
 <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget">
-<image class="orcid" src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" height="16"></a>
-*author 2 here* <br/> **License:**
+<image class="orcid" src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" height="16"></a>,
+Melissa Utomo <br/> **License:**
 [MIT](https://opensource.org/licenses/MIT)<br/>
 
 [![Project Status: Active â€“ The project has reached a stable, usable
@@ -26,7 +26,8 @@ downloads](http://cranlogs.r-pkg.org/badges/shinyaccess)](https://cran.r-project
 [![Github
 Stars](https://img.shields.io/github/stars/ropensci/shinyaccess.svg?style=social&label=Github)](https://github.com/ropensci/shinyaccess)
 
-The goal of shinyaccess is to …
+The `shinyaccess` package provides functions for enhancing web
+accessibility in Shiny apps.
 
 ## Installation
 

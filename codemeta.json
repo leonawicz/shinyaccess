@@ -1,5 +1,8 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "shinyaccess",
   "description": "Provides functions and other resources for enhancing web accessibility in Shiny apps.",
@@ -18,22 +21,37 @@
   "author": [
     {
       "@type": "Person",
-      "givenName": "First",
-      "familyName": "Last",
-      "email": "first.last@example.com",
-      "@id": "https://orcid.org/YOUR-ORCID-ID"
+      "givenName": "Matthew",
+      "familyName": "Leonawicz",
+      "email": "matt_leonawicz@esource.com",
+      "@id": "https://orcid.org/0000-0001-9452-2771"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Melissa",
+      "familyName": "Utomo"
     }
   ],
   "contributor": {},
-  "copyrightHolder": {},
-  "funder": {},
+  "copyrightHolder": [
+    {
+      "@type": "Organization",
+      "name": "E Source"
+    }
+  ],
+  "funder": [
+    {
+      "@type": "Organization",
+      "name": "E Source"
+    }
+  ],
   "maintainer": [
     {
       "@type": "Person",
-      "givenName": "First",
-      "familyName": "Last",
-      "email": "first.last@example.com",
-      "@id": "https://orcid.org/YOUR-ORCID-ID"
+      "givenName": "Matthew",
+      "familyName": "Leonawicz",
+      "email": "matt_leonawicz@esource.com",
+      "@id": "https://orcid.org/0000-0001-9452-2771"
     }
   ],
   "softwareSuggestions": [
@@ -62,10 +80,28 @@
       "sameAs": "https://CRAN.R-project.org/package=covr"
     }
   ],
-  "softwareRequirements": [],
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "shiny",
+      "name": "shiny",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=shiny"
+    }
+  ],
   "releaseNotes": "https://github.com/leonawicz/shinyaccess/blob/master/NEWS.md",
   "readme": "https://github.com/leonawicz/shinyaccess/blob/master/README.md",
-  "fileSize": "10.53KB",
-  "contIntegration": ["https://travis-ci.org/ropensci/shinyaccess", "https://ci.appveyor.com/project/leonawicz/shinyaccess", "https://codecov.io/gh/ropensci/shinyaccess?branch=master"],
-  "developmentStatus": "http://www.repostatus.org/#active"
+  "fileSize": "10.573KB",
+  "contIntegration": [
+    "https://travis-ci.org/ropensci/shinyaccess",
+    "https://ci.appveyor.com/project/leonawicz/shinyaccess",
+    "https://codecov.io/gh/ropensci/shinyaccess?branch=master"
+  ],
+  "developmentStatus": "http://www.repostatus.org/#active",
+  "keywords": ["r-package", "r-shiny", "accessibility"]
 }
