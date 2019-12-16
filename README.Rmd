@@ -17,7 +17,7 @@ library(shinyaccess)
 <br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Travis build status](https://travis-ci.org/ropensci/shinyaccess.svg?branch=master)](https://travis-ci.org/ropensci/shinyaccess)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/shinyaccess?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/shinyaccess)
 [![Codecov test coverage](https://codecov.io/gh/ropensci/shinyaccess/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/shinyaccess?branch=master)

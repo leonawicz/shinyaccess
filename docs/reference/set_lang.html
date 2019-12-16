@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • shinyaccess</title>
+<title>Add HTML language attribute — set_lang • shinyaccess</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -44,7 +44,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Add HTML language attribute — set_lang" />
+<meta property="og:description" content="Add an HTML language attribute to an app." />
 <meta property="og:image" content="https://leonawicz.github.io/shinyaccess/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -65,7 +66,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -115,54 +116,63 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Add HTML language attribute</h1>
+    <small class="dont-index">Source: <a href='https://github.com/leonawicz/shinyaccess/blob/master/R/attributes.R'><code>R/attributes.R</code></a></small>
+    <div class="hidden name"><code>set_lang.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Add an HTML language attribute to an app.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>set_lang</span>(<span class='no'>session</span>, <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"en"</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="set_lang.html">set_lang()</a></code> </p>
-        </td>
-        <td><p>Add HTML language attribute</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="shinyaccess.html">shinyaccess</a></code> </p>
-        </td>
-        <td><p>shinyaccess: Accessibility in Shiny</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="use_access.html">use_access()</a></code> </p>
-        </td>
-        <td><p>Initialize shinyaccess</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>session</th>
+      <td><p>Shiny session.</p></td>
+    </tr>
+    <tr>
+      <th>lang</th>
+      <td><p>character, language abbreviation.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>nothing returned</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>You can inspect the element in your browser to verify. The <code>&lt;html&gt;</code> tag will include <code>lang="en"</code> by default.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
+
+  <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(
+    <span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/fluidPage.html'>fluidPage</a></span>(
+      <span class='fu'>use_access</span>(),
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>h3</a></span>(<span class='st'>"App title"</span>)
+    ),
+    <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>){
+      <span class='fu'>set_lang</span>(<span class='no'>session</span>, <span class='st'>"en"</span>)
+    }
+  )
+}</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 

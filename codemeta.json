@@ -10,7 +10,7 @@
   "codeRepository": "https://github.com/leonawicz/shinyaccess",
   "issueTracker": "https://github.com/leonawicz/shinyaccess/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.0.0.9000",
+  "version": "0.0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -96,12 +96,16 @@
   ],
   "releaseNotes": "https://github.com/leonawicz/shinyaccess/blob/master/NEWS.md",
   "readme": "https://github.com/leonawicz/shinyaccess/blob/master/README.md",
-  "fileSize": "10.573KB",
+  "fileSize": "11.714KB",
   "contIntegration": [
     "https://travis-ci.org/ropensci/shinyaccess",
     "https://ci.appveyor.com/project/leonawicz/shinyaccess",
     "https://codecov.io/gh/ropensci/shinyaccess?branch=master"
   ],
   "developmentStatus": "http://www.repostatus.org/#active",
-  "keywords": ["r-package", "r-shiny", "accessibility"]
+  "keywords": [
+    "r-package",
+    "r-shiny",
+    "accessibility"
+  ]
 }

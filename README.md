@@ -9,7 +9,7 @@
 Melissa Utomo <br/> **License:**
 [MIT](https://opensource.org/licenses/MIT)<br/>
 
-[![Project Status: Active â€“ The project has reached a stable, usable
+[![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Travis build
