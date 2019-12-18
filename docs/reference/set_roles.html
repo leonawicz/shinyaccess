@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add HTML language attribute — set_lang • shinyaccess</title>
+<title>Add role attributes — set_roles • shinyaccess</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -44,8 +44,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add HTML language attribute — set_lang" />
-<meta property="og:description" content="Add an HTML language attribute to an app." />
+<meta property="og:title" content="Add role attributes — set_roles" />
+<meta property="og:description" content="Add role language attribute to key Shiny widgets." />
 <meta property="og:image" content="https://leonawicz.github.io/shinyaccess/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -118,16 +118,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add HTML language attribute</h1>
+    <h1>Add role attributes</h1>
     <small class="dont-index">Source: <a href='https://github.com/leonawicz/shinyaccess/blob/master/R/attributes.R'><code>R/attributes.R</code></a></small>
-    <div class="hidden name"><code>set_lang.Rd</code></div>
+    <div class="hidden name"><code>set_roles.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Add an HTML language attribute to an app.</p>
+    <p>Add role language attribute to key Shiny widgets.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>set_lang</span>(<span class='no'>session</span>, <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"en"</span>)</pre>
+    <pre class="usage"><span class='fu'>set_roles</span>(<span class='no'>session</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,10 +136,6 @@
       <th>session</th>
       <td><p>Shiny session.</p></td>
     </tr>
-    <tr>
-      <th>lang</th>
-      <td><p>character, language abbreviation.</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -147,8 +143,13 @@
     <p>nothing returned</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>You can inspect the element in your browser to verify. The <code>&lt;html&gt;</code> tag
-will include <code>lang="en"</code> by default.</p>
+    <p>You can inspect the element in your browser to verify the addition of role
+attributes for the following Shiny elements.</p>
+<ul>
+<li><p><code>tabsetPanel</code></p></li>
+<li><p><code>tabPanel</code></p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
@@ -157,10 +158,19 @@ will include <code>lang="en"</code> by default.</p>
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(
     <span class='kw'>ui</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/fluidPage.html'>fluidPage</a></span>(
       <span class='fu'><a href='use_access.html'>use_access</a></span>(),
-      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>h3</a></span>(<span class='st'>"App title"</span>)
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>h3</a></span>(<span class='st'>"App title"</span>),
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/tabsetPanel.html'>tabsetPanel</a></span>(
+        <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/tabPanel.html'>tabPanel</a></span>(<span class='st'>"panel1"</span>, <span class='st'>"Content"</span>),
+        <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/tabPanel.html'>tabPanel</a></span>(<span class='st'>"panel2"</span>, <span class='st'>"Content"</span>)
+      ),
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/tabsetPanel.html'>tabsetPanel</a></span>(
+        <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/tabPanel.html'>tabPanel</a></span>(<span class='st'>"panel1"</span>, <span class='st'>"Content"</span>),
+        <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/tabPanel.html'>tabPanel</a></span>(<span class='st'>"panel2"</span>, <span class='st'>"Content"</span>),
+        <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"pills"</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='st'>"tsp2"</span>
+      )
     ),
     <span class='kw'>server</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>){
-      <span class='fu'>set_lang</span>(<span class='no'>session</span>, <span class='st'>"en"</span>)
+      <span class='fu'>set_roles</span>(<span class='no'>session</span>)
     }
   )
 }</div></pre>

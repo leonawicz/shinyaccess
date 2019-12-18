@@ -1,6 +1,7 @@
 #' shinyaccess: Accessibility in Shiny
 #'
-#' This package provides functions and other resources for enhancing web accessibility in Shiny apps.
+#' This package provides functions and other resources for enhancing web
+#' accessibility in Shiny apps.
 #' @docType package
 #' @name shinyaccess
 NULL
@@ -27,5 +28,7 @@ NULL
 #'   )
 #' }
 use_access <- function(){
-  includeScript(system.file("inst/resources/access.js", package = "shinyaccess"))
+  shiny::includeScript(
+    system.file("inst/resources/access.js", package = "shinyaccess")
+  )
 }

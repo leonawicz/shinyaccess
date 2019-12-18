@@ -2,4 +2,4 @@
 
 * Added package scaffolding.
 * Added UI initializer.
-* Added example attribute setter.
+* Added example attribute setters.

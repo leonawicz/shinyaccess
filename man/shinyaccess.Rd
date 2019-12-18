@@ -5,5 +5,6 @@
 \alias{shinyaccess}
 \title{shinyaccess: Accessibility in Shiny}
 \description{
-This package provides functions and other resources for enhancing web accessibility in Shiny apps.
+This package provides functions and other resources for enhancing web
+accessibility in Shiny apps.
 }

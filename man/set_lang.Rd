@@ -18,7 +18,8 @@ nothing returned
 Add an HTML language attribute to an app.
 }
 \details{
-You can inspect the element in your browser to verify. The \code{<html>} tag will include \code{lang="en"} by default.
+You can inspect the element in your browser to verify. The \code{<html>} tag
+will include \code{lang="en"} by default.
 }
 \examples{
 if(interactive()){
