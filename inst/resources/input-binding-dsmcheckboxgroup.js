@@ -2,19 +2,30 @@ const dsmCheckboxGroupInputBinding = new Shiny.InputBinding();
 
 $.extend(dsmCheckboxGroupInputBinding, {
   find: function(scope) {
-    console.log("HERE")
     return $(scope).find('.dsm-input-checkboxgrp');
   },
   getValue: function(el) {
-    let children = Array.from(el.currentTarget.children);
-    let values = children.filter(child => child.nodeName === 'INPUT').filter(child => child.checked === true).map(child => child.value)
+    // Find all inputs in checkbox groups and create an array
+    let inputElements = Array.from($(el).find('input'));
+    // Find input elements that are checked and find their value
+    let values = inputElements.filter(inputElement => inputElement.checked === true).map(inputElement => inputElement.value);
     return values;
+  },
+  setValue: function(el, value){
+    // Clear all checkboxes
+
+    // Accept array
+
+    // Else assume it's a single value
   },
   subscribe: function(el, callback) {
     $(el).on('change.dsmCheckboxGroupInputBinding', function(event) {
       callback();
     });
-  }
+  },
+  unsubscribe: function(el) {
+    $(el).off('.dsmCheckboxGroupInputBinding');
+  },
 });
 
 Shiny.inputBindings.register(dsmCheckboxGroupInputBinding, 'shinyaccess.dsmCheckboxGroupInputBinding');
