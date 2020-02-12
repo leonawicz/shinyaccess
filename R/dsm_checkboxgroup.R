@@ -18,6 +18,7 @@
 #' ui <- fluidPage(
 #'   fluidRow(
 #'     column(3,
+#'       actionButton("btn1", "Reset checkbox group 1"),
 #'       checkboxGroupInput("cb1", "Shiny1 - Variables to show:",
 #'                          list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear")),
 #'       tableOutput("data1")
@@ -28,6 +29,7 @@
 #'       tableOutput("data2")
 #'     ),
 #'     column(3,
+#'       actionButton("btn3", "Reset checkbox group 1"),
 #'       dsmCheckboxGroupInput("cb3", "DSM1 - Variables to show:",
 #'                             c("Cylinders", "Transmission", "Gears"),
 #'                             selected = c("cyl", "am"),
@@ -59,6 +61,13 @@
 #'   output$data4 <- renderTable({
 #'     mtcars[, c("mpg", input$cb4), drop = FALSE]
 #'   }, rownames = TRUE)
+#'
+#'   observeEvent(input$btn1, {
+#'     updateCheckboxGroupInput(session, "cb1", selected = character(0))
+#'   })
+#'   observeEvent(input$btn3, {
+#'     updateDsmCheckboxGroupInput(session, "cb3", selected = character(0))
+#'   })
 #' }
 #'
 #' shinyApp(ui, server)
@@ -83,3 +92,15 @@ dsmCheckboxGroupInput <- function(inputId, label, choices = NULL, selected = NUL
     )
   )
 }
+
+#' @rdname dsmCheckboxGroupInput
+#' @export
+updateDsmCheckboxGroupInput <- function(session, inputId, label = NULL,
+                                        choices = NULL, selected = NULL,
+                                        inline = FALSE, values = choices){
+  message <- .dropnull(list(label = label, choices = choices, inline = inline,
+                            value = selected))
+  session$sendInputMessage(inputId, message)
+}
+
+.dropnull <- function(x) x[!vapply(x, is.null, FUN.VALUE = logical(1))]
