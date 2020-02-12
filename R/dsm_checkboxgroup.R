@@ -29,7 +29,7 @@
 #'       tableOutput("data2")
 #'     ),
 #'     column(3,
-#'       actionButton("btn3", "Reset checkbox group 1"),
+#'       actionButton("btn3", "Reset checkbox group 3"),
 #'       dsmCheckboxGroupInput("cb3", "DSM1 - Variables to show:",
 #'                             c("Cylinders", "Transmission", "Gears"),
 #'                             selected = c("cyl", "am"),
