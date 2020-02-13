@@ -3,6 +3,7 @@
 export(dsmCheckboxGroupInput)
 export(set_lang)
 export(set_roles)
+export(updateDsmCheckboxGroupInput)
 export(use_access)
 importFrom(shiny,HTML)
 importFrom(shiny,includeScript)

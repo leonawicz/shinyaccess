@@ -2,6 +2,7 @@
 % Please edit documentation in R/dsm_checkboxgroup.R
 \name{dsmCheckboxGroupInput}
 \alias{dsmCheckboxGroupInput}
+\alias{updateDsmCheckboxGroupInput}
 \title{DSM checkbox group input}
 \usage{
 dsmCheckboxGroupInput(
@@ -10,22 +11,42 @@ dsmCheckboxGroupInput(
   choices = NULL,
   selected = NULL,
   inline = FALSE,
-  values = choices,
-  width = NULL
+  width = NULL,
+  choiceNames = NULL,
+  choiceValues = NULL
+)
+
+updateDsmCheckboxGroupInput(
+  session,
+  inputId,
+  label = NULL,
+  choices = NULL,
+  selected = NULL,
+  inline = FALSE,
+  values = choices
 )
 }
 \arguments{
-\item{inputId}{input ID.}
+\item{inputId}{The id of the input object.}
 
-\item{label}{text label.}
+\item{label}{The label to set for the input object.}
 
-\item{choices}{selection choices.}
+\item{choices}{List of values to show checkboxes for. If elements of the
+list are named then that name rather than the value is displayed to the user.
+If this argument is provided, then choiceNames and choiceValues must not be
+provided, and vice-versa. The values should be strings; other types (such as
+logicals and numbers) will be coerced to strings.}
 
-\item{selected}{not in use}
+\item{selected}{The values that should be initially selected, if any.}
 
 \item{inline}{not in use}
 
 \item{width}{not in use}
+
+\item{choiceNames, choiceValues}{See \code{\link[shiny]{checkboxGroupInput}}.
+Vector of names and values, must have same length.}
+
+\item{session}{The session object passed to function given to shinyServer.}
 
 \item{value}{defaults to \code{choices}.}
 }
@@ -41,6 +62,7 @@ if (interactive()) {
 ui <- fluidPage(
   fluidRow(
     column(3,
+      actionButton("btn1", "Reset checkbox group 1"),
       checkboxGroupInput("cb1", "Shiny1 - Variables to show:",
                          list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear")),
       tableOutput("data1")
@@ -51,17 +73,17 @@ ui <- fluidPage(
       tableOutput("data2")
     ),
     column(3,
+      actionButton("btn3", "Reset checkbox group 3"),
       dsmCheckboxGroupInput("cb3", "DSM1 - Variables to show:",
-                            c("Cylinders", "Transmission", "Gears"),
-                            selected = c("cyl", "am"),
-                            values = c("cyl", "am", "gear")),
+                            c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
+                            selected = c("cyl", "am")),
       tableOutput("data3")
     ),
     column(3,
       dsmCheckboxGroupInput("cb4", "DSM2 - Variables to show:",
-                            c("Cylinders", "Transmission", "Gears"),
                             selected = c("cyl", "am"),
-                            values = c("cyl", "am", "gear")),
+                            choiceNames = c("Cylinders", "Transmission", "Gears"),
+                            choiceValues = c("cyl", "am", "gear")),
       tableOutput("data4")
     )
   )
@@ -82,6 +104,13 @@ server <- function(input, output, session) {
   output$data4 <- renderTable({
     mtcars[, c("mpg", input$cb4), drop = FALSE]
   }, rownames = TRUE)
+
+  observeEvent(input$btn1, {
+    updateCheckboxGroupInput(session, "cb1", selected = character(0))
+  })
+  observeEvent(input$btn3, {
+    updateDsmCheckboxGroupInput(session, "cb3", selected = character(0))
+  })
 }
 
 shinyApp(ui, server)
