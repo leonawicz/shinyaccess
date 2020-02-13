@@ -13,7 +13,7 @@ $.extend(dsmCheckboxGroupInputBinding, {
   },
   setValue: function(el, value){
     // Clear all checkboxes
-
+    $(el).find('input').prop('checked', false);
     // Accept array
 
     // Else assume it's a single value
