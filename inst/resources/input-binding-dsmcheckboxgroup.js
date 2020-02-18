@@ -26,11 +26,10 @@ $.extend(dsmCheckboxGroupInputBinding, {
     console.log('updateLabel!')
   },
   receiveMessage: function(el, data) {
-   console.log($(el), data)
     // If data.options exist, replace all the options with new ones
     if (data.hasOwnProperty('options')) {
-      $(el).find('div.checkbox-inputgrp').remove;
-      $(el).append(data.options);
+      $(el).find('div.checkbox-inputgrp').remove();
+      $(el,"> legend").append(data.options);
     }
     // If data.value exists, update what values are checked or not checked
     if(data.hasOwnProperty('value')) this.setValue(el, data.value);
