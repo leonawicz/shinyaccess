@@ -1,4 +1,4 @@
-#' DSM checkbox group input
+#' Checkbox group input
 #'
 #' @param inputId The id of the input object.
 #' @param label The label to set for the input object.
@@ -11,7 +11,7 @@
 #' @param inline not in use
 #' @param value defaults to \code{choices}.
 #' @param width not in use
-#' @param choiceNames,choiceValues See \code{\link[shiny]{checkboxGroupInput}}.
+#' @param choiceNames,choiceValues See \code{\link[shiny]{checkboxgroup}}.
 #' Vector of names and values, must have same length.
 #' @param session The session object passed to function given to shinyServer.
 #'
@@ -37,13 +37,13 @@
 #'     ),
 #'     column(3,
 #'       actionButton("btn3", "Reset checkbox group 3"),
-#'       dsmCheckboxGroupInput("cb3", "DSM1 - Variables to show:",
+#'       sa_checkboxgroup("cb3", "SA1 - Variables to show:",
 #'                             c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
 #'                             selected = c("cyl", "am")),
 #'       tableOutput("data3")
 #'     ),
 #'     column(3,
-#'       dsmCheckboxGroupInput("cb4", "DSM2 - Variables to show:",
+#'       sa_checkboxgroup("cb4", "SA2 - Variables to show:",
 #'                             selected = c("cyl", "am"),
 #'                             choiceNames = c("Cylinders", "Transmission", "Gears"),
 #'                             choiceValues = c("cyl", "am", "gear")),
@@ -69,46 +69,45 @@
 #'   }, rownames = TRUE)
 #'
 #'   observeEvent(input$btn1, {
-#'     updateCheckboxGroupInput(session, "cb1", selected = character(0))
+#'     updateCheckboxgroup(session, "cb1", selected = character(0))
 #'   })
 #'   observeEvent(input$btn3, {
-#'     updateDsmCheckboxGroupInput(session, "cb3", selected = c('am', 'gear'))
+#'     update_sa_checkboxgroup(session, "cb3", selected = character(0))
 #'   })
 #' }
 #'
 #' shinyApp(ui, server)
 #'
 #' }
-dsmCheckboxGroupInput <- function(inputId, label, choices = NULL, selected = NULL,
+sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
                                   inline = FALSE, width = NULL, choiceNames = NULL, choiceValues = NULL){
   args <- normalizeChoicesArgs(choices, choiceNames, choiceValues)
   selected <- shiny::restoreInput(id = inputId, default = selected)
-  print(selected)
-  lab <- tolower(gsub("--+", "-", gsub(":", "", gsub(" |/", "-", label))))
-  name <- paste0(lab, "-", args$choiceValues)
   v <- unlist(args$choiceValues)
   vname <- unlist(args$choiceNames)
   x <- sapply(seq_along(v), function(i){
-    paste0("\n  <input type='checkbox' id='", name[i], "' name='", lab, "' value='", v[i], "'",
-                if(v[i] %in% selected) " checked='checked'", "></input>",
-              "\n  <label for='", name[i], "'>", vname[i], "</label>")
+    paste0("\n  <input type='checkbox' id='sa-checkboxgroup-", v[i],
+           "' name='sa-checkboxgroup-", inputId, "' value='", v[i], "'",
+              if(v[i] %in% selected) " checked='checked'", "></input>",
+              "\n  <label for='sa-checkboxgroup-", v[i], "'>", vname[i], "</label>")
   })
   x <- paste(x, collapse = "\n  ")
+  x <- paste0(x, "\n</fieldset>\n")
   tagList(
     singleton(tags$head(includeScript(
-      system.file("resources/input-binding-dsmcheckboxgroup.js", package = "shinyaccess")
+      system.file("resources/input-binding-sa-checkboxgroup.js", package = "shinyaccess")
     ))),
     HTML(
-      paste0("<fieldset id='", inputId, "' class='dsm-input-checkboxgrp'>",
-      "\n  <legend>", label, "</legend>", "\n  <div class='checkbox-inputgrp'>",
-      x, "\n  </div>", "\n</fieldset>\n")
+      paste0("<fieldset id='", inputId, "' class='sa-input-checkboxgrp'>",
+      "\n  <legend>", label, "</legend>\n  <div class='sa-options-group'>",
+      x, "\n  </div>\n</fieldset>\n")
     )
   )
 }
 
-#' @rdname dsmCheckboxGroupInput
+#' @rdname sa_checkboxgroup
 #' @export
-updateDsmCheckboxGroupInput <- function(session, inputId, label = NULL,
+update_sa_checkboxgroup <- function(session, inputId, label = NULL,
                                         choices = NULL, selected = NULL,
                                         inline = FALSE, values = choices){
   message <- .dropnull(list(label = label, choices = choices, inline = inline,
