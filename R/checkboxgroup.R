@@ -27,7 +27,7 @@
 #'     column(3,
 #'       actionButton("btn1", "Reset checkbox group 1"),
 #'       checkboxGroupInput("cb1", "Shiny1 - Variables to show:",
-#'                          list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear")),
+#'                          list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"), width = "1000px"),
 #'       tableOutput("data1")
 #'     ),
 #'     column(3,
