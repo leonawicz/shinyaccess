@@ -72,7 +72,7 @@
 #'     updateCheckboxGroupInput(session, "cb1", selected = character(0))
 #'   })
 #'   observeEvent(input$btn3, {
-#'     updateDsmCheckboxGroupInput(session, "cb3", selected = character(0))
+#'     updateDsmCheckboxGroupInput(session, "cb3", selected = c('am', 'gear'))
 #'   })
 #' }
 #'
@@ -90,19 +90,18 @@ dsmCheckboxGroupInput <- function(inputId, label, choices = NULL, selected = NUL
   vname <- unlist(args$choiceNames)
   x <- sapply(seq_along(v), function(i){
     paste0("\n  <input type='checkbox' id='", name[i], "' name='", lab, "' value='", v[i], "'",
-              if(v[i] %in% selected) " checked='checked'", "'></input>",
+                if(v[i] %in% selected) " checked='checked'", "></input>",
               "\n  <label for='", name[i], "'>", vname[i], "</label>")
   })
   x <- paste(x, collapse = "\n  ")
-  x <- paste0(x, "\n</fieldset>\n")
   tagList(
     singleton(tags$head(includeScript(
       system.file("resources/input-binding-dsmcheckboxgroup.js", package = "shinyaccess")
     ))),
     HTML(
       paste0("<fieldset id='", inputId, "' class='dsm-input-checkboxgrp'>",
-      "\n  <legend>", label, "</legend>",
-      x)
+      "\n  <legend>", label, "</legend>", "\n  <div class='checkbox-inputgrp'>",
+      x, "\n  </div>", "\n</fieldset>\n")
     )
   )
 }
