@@ -86,10 +86,10 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
   v <- unlist(args$choiceValues)
   vname <- unlist(args$choiceNames)
   x <- sapply(seq_along(v), function(i){
-    paste0("\n  <input type='checkbox' id='sa-checkboxgroup-", v[i],
+    paste0("\n  <li class='sa-option-item'>\n   <input type='checkbox' id='sa-checkboxgroup-", v[i],
            "' name='sa-checkboxgroup-", inputId, "' value='", v[i], "'",
               if(v[i] %in% selected) " checked='checked'", "></input>",
-              "\n  <label for='sa-checkboxgroup-", v[i], "'>", vname[i], "</label>")
+              "\n  <label for='sa-checkboxgroup-", v[i], "'>", vname[i], "</label>\n  </li>")
   })
   x <- paste(x, collapse = "\n  ")
   x <- paste0(x, "\n</fieldset>\n")
@@ -99,8 +99,8 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
     ))),
     HTML(
       paste0("<fieldset id='", inputId, "' class='sa-input-checkboxgrp'>",
-      "\n  <legend>", label, "</legend>\n  <div class='sa-options-group'>",
-      x, "\n  </div>\n</fieldset>\n")
+      "\n  <legend>", label, "</legend>\n  <ul class='sa-options-group'>",
+      x, "\n  </ul>\n</fieldset>\n")
     )
   )
 }
