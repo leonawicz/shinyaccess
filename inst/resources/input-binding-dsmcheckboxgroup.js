@@ -23,18 +23,18 @@ $.extend(dsmCheckboxGroupInputBinding, {
     }
   },
   updateLabel: function(el, label) {
-    console.log('updateLabel!')
+    $(el).find('legend').text(label);
   },
   receiveMessage: function(el, data) {
     // If data.options exist, replace all the options with new ones
     if (data.hasOwnProperty('options')) {
-      $(el).find('div.checkbox-inputgrp').remove();
+      $(el).find('.checkbox-inputgrp').remove();
       $(el,"> legend").append(data.options);
     }
     // If data.value exists, update what values are checked or not checked
     if(data.hasOwnProperty('value')) this.setValue(el, data.value);
     //If data.label exists, update the legend element
-    //updateLabel(data.label, this._getLabelNode(el));
+    if(data.hasOwnProperty('label')) this.updateLabel(el, data.label);
 
     $(el).trigger('change');
   },
