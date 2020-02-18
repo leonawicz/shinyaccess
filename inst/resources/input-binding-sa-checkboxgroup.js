@@ -1,14 +1,15 @@
-const dsmCheckboxGroupInputBinding = new Shiny.InputBinding();
+const saCheckboxGroupBinding = new Shiny.InputBinding();
 
-$.extend(dsmCheckboxGroupInputBinding, {
+$.extend(saCheckboxGroupBinding, {
   find: function(scope) {
-    return $(scope).find('.dsm-input-checkboxgrp');
+    return $(scope).find('.sa-input-checkboxgrp');
   },
   getValue: function(el) {
     // Find all inputs in checkbox groups and create an array
     let inputElements = Array.from($(el).find('input'));
     // Find input elements that are checked and find their value
     let values = inputElements.filter(inputElement => inputElement.checked === true).map(inputElement => inputElement.value);
+    console.log(values)
     return values;
   },
   setValue: function(el, value){
@@ -28,7 +29,7 @@ $.extend(dsmCheckboxGroupInputBinding, {
   receiveMessage: function(el, data) {
     // If data.options exist, replace all the options with new ones
     if (data.hasOwnProperty('options')) {
-      $(el).find('div.checkbox-inputgrp').remove();
+      $(el).find('div.sa-options-group').remove();
       $(el,"> legend").append(data.options);
     }
     // If data.value exists, update what values are checked or not checked
@@ -39,13 +40,13 @@ $.extend(dsmCheckboxGroupInputBinding, {
     $(el).trigger('change');
   },
   subscribe: function(el, callback) {
-    $(el).on('change.dsmCheckboxGroupInputBinding', function(event) {
+    $(el).on('change.saCheckboxGroupBinding', function(event) {
       callback();
     });
   },
   unsubscribe: function(el) {
-    $(el).off('.dsmCheckboxGroupInputBinding');
+    $(el).off('.saCheckboxGroupBinding');
   },
 });
 
-Shiny.inputBindings.register(dsmCheckboxGroupInputBinding, 'shinyaccess.dsmCheckboxGroupInputBinding');
+Shiny.inputBindings.register(saCheckboxGroupBinding, 'shinyaccess.saCheckboxGroupBinding');
