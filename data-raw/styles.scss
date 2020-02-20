@@ -1,9 +1,12 @@
 .sa-input-checkboxgrp{
+  &:not(:first-child){
+    position: absolute;
+  }
   legend{
     border-bottom: none;
     font-size: 17px;
     margin-bottom: 5px;
-    padding-left: 0;
+    padding-left: 10px;
   }
   .sa-option-group{
     list-style: none;
