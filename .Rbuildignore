@@ -13,3 +13,4 @@
 ^data-raw$
 ^README\.html$
 ^codemeta\.json$
+^inst/resources/styles\.css\.map$
