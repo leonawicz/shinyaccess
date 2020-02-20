@@ -2,11 +2,21 @@
   legend{
     border-bottom: none;
     font-size: 17px;
-    margin-bottom: 5px;
-    padding-left: 0;
+    margin-bottom: 7px;
+    padding-left: 10px;
   }
-  .sa-option-group{
+  .sa-options-group{
+    display: inline-block;
+    float: left;
     list-style: none;
+    padding-left: 10px;
+    .sa-option-item{
+      label {
+        font-size: 15px;
+        font-weight: normal;
+        padding: 0 7px 0 3px;
+      }
+    }
   }
 }
 
