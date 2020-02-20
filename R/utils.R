@@ -164,7 +164,7 @@ validateIcon <- function(icon) {
 }
 
 controlLabel <- function(controlName, label) {
-  label %AND% htmltools::tags$label(class = "control-label", `for` = controlName, label)
+  label %AND% shiny::tags$label(class = "control-label", `for` = controlName, label)
 }
 
 formatNoSci <- function(x) {

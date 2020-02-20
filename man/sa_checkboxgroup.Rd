@@ -10,6 +10,7 @@ sa_checkboxgroup(
   label,
   choices = NULL,
   selected = NULL,
+  ncol = 1,
   inline = FALSE,
   width = NULL,
   choiceNames = NULL,
@@ -22,8 +23,7 @@ update_sa_checkboxgroup(
   label = NULL,
   choices = NULL,
   selected = NULL,
-  inline = FALSE,
-  values = choices
+  inline = FALSE
 )
 }
 \arguments{
@@ -39,16 +39,17 @@ logicals and numbers) will be coerced to strings.}
 
 \item{selected}{The values that should be initially selected, if any.}
 
-\item{inline}{not in use}
+\item{ncol}{number of columns when \code{inline = FALSE}. Will auto-truncate
+to the number of choices if exceeded.}
+
+\item{inline}{if \code{TRUE}, \code{ncol} is ignored.}
 
 \item{width}{not in use}
 
-\item{choiceNames, choiceValues}{See \code{\link[shiny]{checkboxgroup}}.
+\item{choiceNames, choiceValues}{See \code{shiny::checkboxgroup}.
 Vector of names and values, must have same length.}
 
 \item{session}{The session object passed to function given to shinyServer.}
-
-\item{value}{defaults to \code{choices}.}
 }
 \value{
 A list of HTML elements that can be added to a UI definition.
@@ -59,35 +60,46 @@ Checkbox group input
 \examples{
 if (interactive()) {
 
-ui <- fluidPage(
+ui <- function(request) {
+fluidPage(
+  use_access(),
+  fluidRow(bookmarkButton()),
   fluidRow(
     column(3,
       actionButton("btn1", "Reset checkbox group 1"),
-      checkboxGroupInput("cb1", "Shiny1 - Variables to show:",
-                         list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear")),
+      checkboxGroupInput(
+        "cb1", "Shiny1 - Variables to show:",
+        list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
+        width = "1000px"),
       tableOutput("data1")
     ),
     column(3,
-      checkboxGroupInput("cb2", "Shiny2 - Variables to show:",
-                         list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear")),
+      checkboxGroupInput(
+        "cb2", "Shiny2 - Variables to show:",
+        list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
+        inline = TRUE),
       tableOutput("data2")
     ),
     column(3,
       actionButton("btn3", "Reset checkbox group 3"),
-      sa_checkboxgroup("cb3", "SA1 - Variables to show:",
-                            c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
-                            selected = c("cyl", "am")),
+      sa_checkboxgroup(
+        "cb3", "SA1 - Variables to show:",
+        c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
+        selected = c("cyl", "am"), ncol = 2),
       tableOutput("data3")
     ),
     column(3,
-      sa_checkboxgroup("cb4", "SA2 - Variables to show:",
-                            selected = c("cyl", "am"),
-                            choiceNames = c("Cylinders", "Transmission", "Gears"),
-                            choiceValues = c("cyl", "am", "gear")),
+    actionButton("btn4", "Set to transmission and gear"),
+      sa_checkboxgroup(
+        "cb4", "SA2 - Variables to show:",
+        selected = c("cyl", "am"),
+        choiceNames = c("Cylinders", "Transmission", "Gears"),
+        choiceValues = c("cyl", "am", "gear"), inline = TRUE),
       tableOutput("data4")
     )
   )
 )
+}
 
 server <- function(input, output, session) {
   output$data1 <- renderTable({
@@ -111,9 +123,12 @@ server <- function(input, output, session) {
   observeEvent(input$btn3, {
     update_sa_checkboxgroup(session, "cb3", selected = character(0))
   })
+  observeEvent(input$btn4, {
+    update_sa_checkboxgroup(session, "cb4", selected = c("am", "gear"))
+  })
 }
 
-shinyApp(ui, server)
+shinyApp(ui, server, enableBookmarking = "url")
 
 }
 }

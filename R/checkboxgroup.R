@@ -12,7 +12,7 @@
 #' to the number of choices if exceeded.
 #' @param inline if \code{TRUE}, \code{ncol} is ignored.
 #' @param width not in use
-#' @param choiceNames,choiceValues See \code{\link[shiny]{checkboxgroup}}.
+#' @param choiceNames,choiceValues See \code{shiny::checkboxgroup}.
 #' Vector of names and values, must have same length.
 #' @param session The session object passed to function given to shinyServer.
 #'
@@ -30,29 +30,34 @@
 #'   fluidRow(
 #'     column(3,
 #'       actionButton("btn1", "Reset checkbox group 1"),
-#'       checkboxGroupInput("cb1", "Shiny1 - Variables to show:",
-#'                          list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"), width = "1000px"),
+#'       checkboxGroupInput(
+#'         "cb1", "Shiny1 - Variables to show:",
+#'         list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
+#'         width = "1000px"),
 #'       tableOutput("data1")
 #'     ),
 #'     column(3,
-#'       checkboxGroupInput("cb2", "Shiny2 - Variables to show:",
-#'                          list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
-#'                          inline = TRUE),
+#'       checkboxGroupInput(
+#'         "cb2", "Shiny2 - Variables to show:",
+#'         list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
+#'         inline = TRUE),
 #'       tableOutput("data2")
 #'     ),
 #'     column(3,
 #'       actionButton("btn3", "Reset checkbox group 3"),
-#'       sa_checkboxgroup("cb3", "SA1 - Variables to show:",
-#'                             c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
-#'                             selected = c("cyl", "am"), ncol = 2),
+#'       sa_checkboxgroup(
+#'         "cb3", "SA1 - Variables to show:",
+#'         c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
+#'         selected = c("cyl", "am"), ncol = 2),
 #'       tableOutput("data3")
 #'     ),
 #'     column(3,
 #'     actionButton("btn4", "Set to transmission and gear"),
-#'       sa_checkboxgroup("cb4", "SA2 - Variables to show:",
-#'                             selected = c("cyl", "am"),
-#'                             choiceNames = c("Cylinders", "Transmission", "Gears"),
-#'                             choiceValues = c("cyl", "am", "gear"), inline = TRUE),
+#'       sa_checkboxgroup(
+#'         "cb4", "SA2 - Variables to show:",
+#'         selected = c("cyl", "am"),
+#'         choiceNames = c("Cylinders", "Transmission", "Gears"),
+#'         choiceValues = c("cyl", "am", "gear"), inline = TRUE),
 #'       tableOutput("data4")
 #'     )
 #'   )
@@ -140,8 +145,8 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
 #' @rdname sa_checkboxgroup
 #' @export
 update_sa_checkboxgroup <- function(session, inputId, label = NULL,
-                                        choices = NULL, selected = NULL,
-                                        inline = FALSE, values = choices){
+                                    choices = NULL, selected = NULL,
+                                    inline = FALSE){
   message <- dropNulls(list(label = label, choices = choices, inline = inline,
                             value = selected))
   session$sendInputMessage(inputId, message)
