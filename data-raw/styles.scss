@@ -10,9 +10,12 @@
     float: left;
     list-style: none;
     padding-left: 10px;
-    label {
-      font-size: 15px;
-      font-weight: normal;
+    .sa-option-item{
+      label {
+        font-size: 15px;
+        font-weight: normal;
+        padding: 0 7px 0 3px;
+      }
     }
   }
 }
