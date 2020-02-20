@@ -8,8 +8,9 @@
 #' provided, and vice-versa. The values should be strings; other types (such as
 #' logicals and numbers) will be coerced to strings.
 #' @param selected The values that should be initially selected, if any.
-#' @param inline not in use
-#' @param value defaults to \code{choices}.
+#' @param ncol number of columns when \code{inline = FALSE}. Will auto-truncate
+#' to the number of choices if exceeded.
+#' @param inline if \code{TRUE}, \code{ncol} is ignored.
 #' @param width not in use
 #' @param choiceNames,choiceValues See \code{\link[shiny]{checkboxgroup}}.
 #' Vector of names and values, must have same length.
@@ -22,7 +23,9 @@
 #' @examples
 #' if (interactive()) {
 #'
-#' ui <- fluidPage(
+#' ui <- function(request) {
+#' fluidPage(
+#'   fluidRow(bookmarkButton()),
 #'   fluidRow(
 #'     column(3,
 #'       actionButton("btn1", "Reset checkbox group 1"),
@@ -32,25 +35,28 @@
 #'     ),
 #'     column(3,
 #'       checkboxGroupInput("cb2", "Shiny2 - Variables to show:",
-#'                          list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear")),
+#'                          list("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
+#'                          inline = TRUE),
 #'       tableOutput("data2")
 #'     ),
 #'     column(3,
 #'       actionButton("btn3", "Reset checkbox group 3"),
 #'       sa_checkboxgroup("cb3", "SA1 - Variables to show:",
 #'                             c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
-#'                             selected = c("cyl", "am")),
+#'                             selected = c("cyl", "am"), ncol = 2),
 #'       tableOutput("data3")
 #'     ),
 #'     column(3,
+#'     actionButton("btn4", "Set to transmission and gear"),
 #'       sa_checkboxgroup("cb4", "SA2 - Variables to show:",
 #'                             selected = c("cyl", "am"),
 #'                             choiceNames = c("Cylinders", "Transmission", "Gears"),
-#'                             choiceValues = c("cyl", "am", "gear")),
+#'                             choiceValues = c("cyl", "am", "gear"), inline = TRUE),
 #'       tableOutput("data4")
 #'     )
 #'   )
 #' )
+#' }
 #'
 #' server <- function(input, output, session) {
 #'   output$data1 <- renderTable({
@@ -74,35 +80,60 @@
 #'   observeEvent(input$btn3, {
 #'     update_sa_checkboxgroup(session, "cb3", selected = character(0))
 #'   })
+#'   observeEvent(input$btn4, {
+#'     update_sa_checkboxgroup(session, "cb4", selected = c("am", "gear"))
+#'   })
 #' }
 #'
-#' shinyApp(ui, server)
+#' shinyApp(ui, server, enableBookmarking = "url")
 #'
 #' }
 sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
-                                  inline = FALSE, width = NULL, choiceNames = NULL, choiceValues = NULL){
+                             ncol = 1, inline = FALSE, width = NULL,
+                             choiceNames = NULL, choiceValues = NULL){
   args <- normalizeChoicesArgs(choices, choiceNames, choiceValues)
   selected <- shiny::restoreInput(id = inputId, default = selected)
   v <- unlist(args$choiceValues)
   vname <- unlist(args$choiceNames)
-  x <- sapply(seq_along(v), function(i){
-    paste0("\n  <li class='sa-option-item'>\n   <input type='checkbox' id='sa-checkboxgroup-", v[i],
-           "' name='sa-checkboxgroup-", inputId, "' value='", v[i], "'",
-              if(v[i] %in% selected) " checked='checked'", "></input>",
-              "\n  <label for='sa-checkboxgroup-", v[i], "'>", vname[i], "</label>\n  </li>")
-  })
-  x <- paste(x, collapse = "\n  ")
-  x <- paste0(x, "\n</fieldset>\n")
+  if(ncol < 1) stop("`ncol` must be >= 1.", call. = FALSE)
+  ncol <- if(inline) 1 else min(ncol, length(v))
+  if(!inline & ncol > 1){
+    idx <- ceiling(seq_along(v) / ncol)
+    v <- split(v, idx)
+    vname <- split(vname, idx)
+    x <- sapply(seq_along(v), function(i){
+      .sa_cbg_opts(inputId, v[[i]], vname[[i]], selected, inline)
+    })
+    x <- paste0(x, collapse = "")
+  } else {
+    x <- .sa_cbg_opts(inputId, v, vname, selected, inline)
+  }
+
   tagList(
     singleton(tags$head(includeScript(
       system.file("resources/input-binding-sa-checkboxgroup.js", package = "shinyaccess")
     ))),
     HTML(
-      paste0("<fieldset id='", inputId, "' class='sa-input-checkboxgrp'>",
-      "\n  <legend>", label, "</legend>\n  <ul class='sa-options-group'>",
-      x, "\n  </ul>\n</fieldset>\n")
+      paste0("<fieldset id='", inputId, "' class='sa-input-checkboxgrp' style='width:auto;'>",
+      "\n  <legend>", label, "</legend>", x, "\n</fieldset>\n")
     )
   )
+}
+
+.sa_cbg_opts <- function(inputId, v, vname, selected, inline){
+  x <- sapply(seq_along(v), function(i){
+    paste0(
+      '\n    <li class="sa-option-item"',
+      if(inline) ' style="display:inline-block;"', '>',
+      '\n      <input type="checkbox" id="sa-checkboxgroup-', v[i],
+      '" name="sa-checkboxgroup-', inputId, '" value="', v[i], '"',
+      if(v[i] %in% selected) ' checked="checked"', '></input>',
+      '\n      <label for="sa-checkboxgroup-', v[i], '">', vname[i],
+      '</label>\n    </li>'
+    )
+  })
+  x <- paste(x, collapse = "\n      ")
+  paste0('\n  <ul class="sa-options-group">', x, '\n  </ul>', sep = "\n")
 }
 
 #' @rdname sa_checkboxgroup
@@ -110,9 +141,7 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
 update_sa_checkboxgroup <- function(session, inputId, label = NULL,
                                         choices = NULL, selected = NULL,
                                         inline = FALSE, values = choices){
-  message <- .dropnull(list(label = label, choices = choices, inline = inline,
+  message <- dropNulls(list(label = label, choices = choices, inline = inline,
                             value = selected))
   session$sendInputMessage(inputId, message)
 }
-
-.dropnull <- function(x) x[!vapply(x, is.null, FUN.VALUE = logical(1))]
