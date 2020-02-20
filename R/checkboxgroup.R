@@ -25,6 +25,7 @@
 #'
 #' ui <- function(request) {
 #' fluidPage(
+#'   use_access(),
 #'   fluidRow(bookmarkButton()),
 #'   fluidRow(
 #'     column(3,
