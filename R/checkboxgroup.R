@@ -23,7 +23,9 @@
 #' @examples
 #' if (interactive()) {
 #'
-#' ui <- fluidPage(
+#' ui <- function(request) {
+#' fluidPage(
+#'   fluidRow(bookmarkButton()),
 #'   fluidRow(
 #'     column(3,
 #'       actionButton("btn1", "Reset checkbox group 1"),
@@ -54,6 +56,7 @@
 #'     )
 #'   )
 #' )
+#' }
 #'
 #' server <- function(input, output, session) {
 #'   output$data1 <- renderTable({
@@ -82,7 +85,7 @@
 #'   })
 #' }
 #'
-#' shinyApp(ui, server)
+#' shinyApp(ui, server, enableBookmarking = "url")
 #'
 #' }
 sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
