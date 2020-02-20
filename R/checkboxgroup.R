@@ -47,8 +47,8 @@
 #'       actionButton("btn3", "Reset checkbox group 3"),
 #'       sa_checkboxgroup(
 #'         "cb3", "SA1 - Variables to show:",
-#'         c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
-#'         selected = c("cyl", "am"), ncol = 2),
+#'         c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear", "A" = "a", "B" = "b"),
+#'         selected = c("cyl", "am"), ncol = 3),
 #'       tableOutput("data3")
 #'     ),
 #'     column(3,
@@ -104,7 +104,7 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
   if(ncol < 1) stop("`ncol` must be >= 1.", call. = FALSE)
   ncol <- if(inline) 1 else min(ncol, length(v))
   if(!inline & ncol > 1){
-    idx <- ceiling(seq_along(v) / ncol)
+    idx <- ceiling(seq_along(v) / ceiling(length(v) / ncol))
     v <- split(v, idx)
     vname <- split(vname, idx)
     x <- sapply(seq_along(v), function(i){
