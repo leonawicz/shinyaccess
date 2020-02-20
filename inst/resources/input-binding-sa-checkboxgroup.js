@@ -7,18 +7,6 @@ $.extend(saCheckboxGroupBinding, {
   getValue: function(el) {
     // Find all inputs in checkbox groups and create an array
     let inputElements = Array.from($(el).find('input'));
-
-    let options = Array.from($(el).find('li'));
-    console.log(options)
-    //options is an array of objects
-
-    for (var i = 0; i < options.length; i++) {
-      //console.log(options[i].children[0].value)
-      //console.log(options[i].children[1].innerHTML)
-      options[i] = { value:   options[i].children[0].value,
-                   label:   options[i].children[1].innerHTML };
-    }
-    console.log(options);
     // Find input elements that are checked and find their value
     let values = inputElements.filter(inputElement => inputElement.checked === true).map(inputElement => inputElement.value);
     return values;
@@ -35,27 +23,21 @@ $.extend(saCheckboxGroupBinding, {
     }
   },
 getState: function(el) {
-
-    //var $objs = $('input:checkbox[name="' + $escape(el.id) + '"]');
-    // Store options in an array of objects, each with with value and label
+    // Store checkbox options in an array
     let options = Array.from($(el).find('li'));
-    //options is an array of objects
-
+    // Replace each value with an object containin the option value and label
     for (var i = 0; i < options.length; i++) {
-      options[i] = { value:   options[i].children[0].value,
-                     label:   options[0].children[1].innerHTML };
+      options[i] = {
+        value: options[i].children[0].value,
+        label: options[i].children[1].innerHTML
+      };
     }
-
     let labelText = $(el).find('legend').text();
-
     let state = {
       label: labelText,
       value: this.getValue(el),
       options: options
     };
-
-    console.log('state = ', state);
-
     return state;
   },
   updateLabel: function(el, label) {
