@@ -28,7 +28,12 @@ NULL
 #'   )
 #' }
 use_access <- function(){
-  shiny::includeScript(
-    system.file("inst/resources/access.js", package = "shinyaccess")
+  shiny::tagList(
+    shiny::tags$head(shiny::includeScript(
+      system.file("inst/resources/access.js", package = "shinyaccess")
+    )),
+    shiny::tags$head(shiny::includeCSS(
+      system.file("inst/resources/styles.css", package = "shinyaccess")
+    ))
   )
 }
