@@ -1,3 +1,4 @@
+/* Checkbox group */
 .sa-input-checkboxgrp legend {
   border-bottom: none;
   font-size: 17px;
@@ -14,6 +15,21 @@
   font-size: 15px;
   font-weight: normal;
   padding: 0 7px 0 3px;
+}
+
+/* Toggles */
+button.sa-togglebtn[role=switch] {
+  border: 0.05rem solid;
+  padding: 0;
+}
+button.sa-togglebtn[role=switch][aria-checked=true] :first-child, button.sa-togglebtn[role=switch][aria-checked=false] :last-child {
+  background-color: #000;
+  color: #fff;
+}
+button.sa-togglebtn[role=switch][aria-checked] span {
+  display: inline-block;
+  padding: 0.5rem;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=styles.css.map */

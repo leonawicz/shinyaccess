@@ -1,11 +1,12 @@
-.sa-input-checkboxgrp{
-  legend{
+/* Checkbox group */
+.sa-input-checkboxgrp {
+  legend {
     border-bottom: none;
     font-size: 17px;
     margin-bottom: 7px;
     padding-left: 10px;
   }
-  .sa-options-group{
+  .sa-options-group {
     display: inline-block;
     float: left;
     list-style: none;
@@ -19,4 +20,21 @@
     }
   }
 }
+
+/* Toggles */
+button.sa-togglebtn[role='switch'] {
+  border: 0.05rem solid;
+  padding: 0;
+  &[aria-checked="true"] :first-child,
+  &[aria-checked="false"] :last-child{
+    background-color: #000;
+    color: #fff;
+  }
+  &[aria-checked] span {
+    display: inline-block;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+}
+
 

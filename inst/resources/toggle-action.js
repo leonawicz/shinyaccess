@@ -1,4 +1,4 @@
-const toggles = document.querySelectorAll('[role="switch"]');
+const toggles = document.querySelectorAll('.sa-togglebtn');
 
 toggles.forEach.call(toggles, toggle => {
   // add event listener to all toggle buttons
