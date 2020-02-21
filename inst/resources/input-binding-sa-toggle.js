@@ -12,7 +12,7 @@ $.extend(saToggleBinding, {
   },
   // WORK ON THIS
   subscribe: function(el, callback) {
-    $(el).on('change.checkboxInputBinding', function(event) {
+    $(el).on('change.saToggleBinding', function(event) {
       callback(true);
     });
   },
