@@ -32,6 +32,9 @@ use_access <- function(){
     shiny::tags$head(shiny::includeScript(
       system.file("inst/resources/access.js", package = "shinyaccess")
     )),
+    shiny::tags$head(shiny::includeScript(
+      system.file("inst/resources/toggle-action.js", package = "shinyaccess")
+    )),
     shiny::tags$head(shiny::includeCSS(
       system.file("inst/resources/styles.css", package = "shinyaccess")
     ))
