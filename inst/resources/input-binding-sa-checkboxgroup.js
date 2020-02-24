@@ -22,7 +22,7 @@ $.extend(saCheckboxGroupBinding, {
       }
     }
   },
-getState: function(el) {
+  getState: function(el) {
     // Store checkbox options in an array
     let options = Array.from($(el).find('li'));
     // Replace each value with an object containin the option value and label

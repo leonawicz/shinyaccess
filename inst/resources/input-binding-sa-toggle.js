@@ -10,7 +10,6 @@ $.extend(saToggleBinding, {
   setValue: function(el, value) {
     el.lastElementChild.getAttribute('aria-checked') = value;
   },
-  // WORK ON THIS
   subscribe: function(el, callback) {
     $(el).on('change.saToggleBinding', function(event) {
       callback(true);
@@ -19,22 +18,14 @@ $.extend(saToggleBinding, {
   unsubscribe: function(el) {
     $(el).off('.sa-input-toggle');
   },
-  // do we need this?
-  getState: function(el) {
-    return {
-      label: "COMPLETE THIS",
-      value: el.lastElementChild.getAttribute('aria-checked')
-    };
-  },
   receiveMessage: function(el, data) {
     if (data.hasOwnProperty('value'))
       el.lastElementChild.getAttribute('aria-checked') = data.value;
-
-    // checkboxInput()'s label works different from other
-    // input labels...the label container should always exist
-    // WORK ON THIS
-    if (data.hasOwnProperty('label'))
-      $(el).parent().find('span').text(data.label);
+    // Refactor reassigning labels
+    if (data.hasOwnProperty('label')){
+      $(el).find('span').eq(0).text(data.label[0]);
+      $(el).find('span').eq(1).text(data.label[1]);
+    }
 
     $(el).trigger('change');
   }
