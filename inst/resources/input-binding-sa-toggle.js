@@ -19,7 +19,6 @@ $.extend(saToggleBinding, {
       //console.log(e.currentTarget.children[1].getAttribute('aria-checked'))
       //console.log(e.target.find('span').getAttribute('aria-checked'));
       let isChecked = e.currentTarget.children[1].getAttribute('aria-checked') === 'true';
-      console.log(isChecked)
       e.currentTarget.children[1].setAttribute('aria-checked', !isChecked);
       callback();
     });
@@ -29,7 +28,7 @@ $.extend(saToggleBinding, {
   },
   receiveMessage: function(el, data) {
     if (data.hasOwnProperty('value'))
-      el.lastElementChild.getAttribute('aria-checked') = data.value;
+      el.children[1].setAttribute('aria-checked', data.value);
 
     if (data.hasOwnProperty('label')){
       $(el).find('label').text(data.label);
