@@ -11,8 +11,15 @@ $.extend(saToggleBinding, {
     el.lastElementChild.getAttribute('aria-checked') = value;
   },
   subscribe: function(el, callback) {
-    $(el).on('change.saToggleBinding', function(event) {
+    /*$(el).on('change.saToggleBinding', function(event) {
       callback(true);
+    });
+    */
+    $(el).on("click", function(e) {
+      console.log(e.target.find('span').getAttribute('aria-checked'));
+      let isChecked = e.target.getAttribute('aria-checked') === 'true';
+      e.target.setAttribute('aria-checked', !isChecked);
+      callback();
     });
   },
   unsubscribe: function(el) {
@@ -22,9 +29,9 @@ $.extend(saToggleBinding, {
     if (data.hasOwnProperty('value'))
       el.lastElementChild.getAttribute('aria-checked') = data.value;
     // Refactor reassigning labels
-    if (data.hasOwnProperty('label')){
-      $(el).find('span').eq(0).text(data.label[0]);
-      $(el).find('span').eq(1).text(data.label[1]);
+    if (data.hasOwnProperty('value_labels')){
+      $(el).find('span').eq(0).text(data.value_labels[0]);
+      $(el).find('span').eq(1).text(data.value_labels[1]);
     }
 
     $(el).trigger('change');
