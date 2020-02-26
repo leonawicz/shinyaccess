@@ -171,3 +171,7 @@ formatNoSci <- function(x) {
   if (is.null(x)) return(NULL)
   format(x, scientific = FALSE, digits = 15)
 }
+
+colorname_to_hex <- function(x){
+  do.call(rgb, c(as.list(col2rgb(x)[, 1]), maxColorValue = 255))
+}
