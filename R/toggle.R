@@ -36,7 +36,7 @@
 #'       ),
 #'       sa_toggle(
 #'         "toggle2", "Show text B", TRUE, "On", "Off",
-#'         "yellowgreen", "black", "100%"
+#'         "yellowgreen", "black"
 #'       )
 #'     ),
 #'     column(9, textOutput("txt1"), textOutput("txt2"))

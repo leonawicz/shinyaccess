@@ -19,6 +19,7 @@
 
 /* Toggles */
 button.sa-togglebtn[role=switch] {
+  align-items: stretch;
   background: #D6DBDB;
   border: #cccccc;
   color: #8C8C8C;

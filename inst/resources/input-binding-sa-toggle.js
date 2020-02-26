@@ -11,10 +11,9 @@ $.extend(saToggleBinding, {
     el.lastElementChild.getAttribute('aria-checked') = value;
   },
   subscribe: function(el, callback) {
-    $(el).on('change.saToggleBinding', function(event) {
+    $(el).change('saToggleBinding', function(event) {
       callback();
-    });
-    $(el).on("click", function(event) {
+    }).click(function(event) {
       let isChecked = event.currentTarget.children[1].getAttribute('aria-checked') === 'true';
       event.currentTarget.children[1].setAttribute('aria-checked', !isChecked);
       callback();
