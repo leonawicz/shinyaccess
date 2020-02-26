@@ -173,5 +173,7 @@ formatNoSci <- function(x) {
 }
 
 colorname_to_hex <- function(x){
-  do.call(rgb, c(as.list(col2rgb(x)[, 1]), maxColorValue = 255))
+  do.call(grDevices::rgb,
+          c(as.list(grDevices::col2rgb(x)[, 1]), maxColorValue = 255)
+  )
 }

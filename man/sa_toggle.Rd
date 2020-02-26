@@ -42,6 +42,8 @@ update_sa_toggle(
 
 \item{width}{The width of the input, e.g. '400px', or '100%'; see
 \code{shiny::validateCssUnit}.}
+
+\item{session}{The session object passed to function given to shinyServer.}
 }
 \value{
 HTML element that can be added to a UI definition.
