@@ -51,10 +51,43 @@
     list-style: none;
     padding-left: 10px;
     .sa-option-item{
+      input {
+        position: absolute;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0;
+        border: 0;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        &:focus + label {
+          outline: dashed 2px #d3d3d3;
+          outline-offset: 5px;
+        }
+        &:checked + label:before {
+          background-color: #707070;
+        }
+        &:focus + label {
+          outline: dashed 2px #d3d3d3;
+          outline-offset: 5px;
+        }
+        &:focus:not(:focus-visible) {
+          outline: none;
+        }
+      }
       label {
         font-size: 15px;
         font-weight: normal;
         padding: 0 7px 0 3px;
+        display: inline-block;
+        &:before {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            width: 15px;
+            height: 15px;
+            border: 2px solid #707070;
+            margin-right: 8px;
+        }
       }
     }
   }
