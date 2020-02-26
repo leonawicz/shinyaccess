@@ -11,15 +11,12 @@ $.extend(saToggleBinding, {
     el.lastElementChild.getAttribute('aria-checked') = value;
   },
   subscribe: function(el, callback) {
-    /*$(el).on('change.saToggleBinding', function(event) {
-      callback(true);
+    $(el).on('change.saToggleBinding', function(event) {
+      callback();
     });
-    */
-    $(el).on("click", function(e) {
-      //console.log(e.currentTarget.children[1].getAttribute('aria-checked'))
-      //console.log(e.target.find('span').getAttribute('aria-checked'));
-      let isChecked = e.currentTarget.children[1].getAttribute('aria-checked') === 'true';
-      e.currentTarget.children[1].setAttribute('aria-checked', !isChecked);
+    $(el).on("click", function(event) {
+      let isChecked = event.currentTarget.children[1].getAttribute('aria-checked') === 'true';
+      event.currentTarget.children[1].setAttribute('aria-checked', !isChecked);
       callback();
     });
   },

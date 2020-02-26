@@ -84,8 +84,8 @@ fluidPage(
       actionButton("btn3", "Reset checkbox group 3"),
       sa_checkboxgroup(
         "cb3", "SA1 - Variables to show:",
-        c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear"),
-        selected = c("cyl", "am"), ncol = 2),
+        c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear", "A" = "a", "B" = "b"),
+        selected = c("cyl", "am"), ncol = 3),
       tableOutput("data3")
     ),
     column(3,
