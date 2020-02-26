@@ -1,3 +1,40 @@
+/* Checkbox */
+.sa-input-checkbox input {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+.sa-input-checkbox input:focus + label {
+  outline: dashed 2px #d3d3d3;
+  outline-offset: 5px;
+}
+.sa-input-checkbox input:checked + label:before {
+  background-color: #707070;
+}
+.sa-input-checkbox input:focus + label {
+  outline: dashed 2px #d3d3d3;
+  outline-offset: 5px;
+}
+.sa-input-checkbox input:focus:not(:focus-visible) {
+  outline: none;
+}
+.sa-input-checkbox label {
+  display: inline-block;
+}
+.sa-input-checkbox label:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #707070;
+  margin-right: 8px;
+}
+
 /* Checkbox group */
 .sa-input-checkboxgrp legend {
   border-bottom: none;
@@ -17,7 +54,7 @@
   padding: 0 7px 0 3px;
 }
 
-/* Toggles */
+/* Toggle button */
 button.sa-togglebtn[role=switch] {
   align-items: stretch;
   background: #D6DBDB;

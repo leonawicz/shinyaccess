@@ -5,12 +5,14 @@ $.extend(saToggleBinding, {
     return $(scope).find('.sa-input-toggle');
   },
   getValue: function(el) {
+    console.log(el)
     return el.lastElementChild.getAttribute('aria-checked');
   },
   setValue: function(el, value) {
     el.lastElementChild.getAttribute('aria-checked') = value;
   },
   subscribe: function(el, callback) {
+    console.log(el)
     $(el).change('saToggleBinding', function(event) {
       callback();
     }).click(function(event) {
