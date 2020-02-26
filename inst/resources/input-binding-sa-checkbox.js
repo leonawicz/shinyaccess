@@ -1,4 +1,4 @@
-var saCheckboxBinding = new Shiny.InputBinding();
+const saCheckboxBinding = new Shiny.InputBinding();
 
 $.extend(saCheckboxBinding, {
   find: function(scope) {
@@ -8,7 +8,15 @@ $.extend(saCheckboxBinding, {
     return $(el).find('input').checked;
   },
   setValue: function(el, value) {
-    $(el).find('input').checked = value;
+    $(el).find('input').attr('aria-checked', value);
+  },
+  updateLabel: function(el, label){
+    $(el).find('label').text(label);
+  },
+  receiveMessage: function(el, data) {
+    if (data.hasOwnProperty('value')) this.setValue(el, data.value)
+    if (data.hasOwnProperty('label')) this.updateLabel(el, data.label)
+    $(el).trigger('change');
   },
   subscribe: function(el, callback) {
     $(el).on('change.saCheckboxBinding', function(event) {
@@ -17,18 +25,6 @@ $.extend(saCheckboxBinding, {
   },
   unsubscribe: function(el) {
     $(el).off('.sa-input-checkbox');
-  },
-  getState: function(el) {
-
-  },
-  receiveMessage: function(el, data) {
-    if (data.hasOwnProperty('value'))
-      $(el).find('input').checked = data.value;
-
-    if (data.hasOwnProperty('label'))
-      $(el).find('label').text(data.label);
-
-    $(el).trigger('change');
   }
 });
 inputBindings.register(saCheckboxBinding, 'shiny.saCheckboxBinding');
