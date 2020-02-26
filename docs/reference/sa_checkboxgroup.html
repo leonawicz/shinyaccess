@@ -145,8 +145,7 @@
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>choices</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>selected</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>inline</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>values</span> <span class='kw'>=</span> <span class='no'>choices</span>
+  <span class='kw'>inline</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -187,7 +186,7 @@ to the number of choices if exceeded.</p></td>
     </tr>
     <tr>
       <th>choiceNames, choiceValues</th>
-      <td><p>See <code>checkboxgroup</code>.
+      <td><p>See <code>shiny::checkboxgroup</code>.
 Vector of names and values, must have same length.</p></td>
     </tr>
     <tr>
@@ -227,8 +226,8 @@ Vector of names and values, must have same length.</p></td>
       <span class='fu'>actionButton</span>(<span class='st'>"btn3"</span>, <span class='st'>"Reset checkbox group 3"</span>),
       <span class='fu'>sa_checkboxgroup</span>(
         <span class='st'>"cb3"</span>, <span class='st'>"SA1 - Variables to show:"</span>,
-        <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Cylinders"</span> <span class='kw'>=</span> <span class='st'>"cyl"</span>, <span class='st'>"Transmission"</span> <span class='kw'>=</span> <span class='st'>"am"</span>, <span class='st'>"Gears"</span> <span class='kw'>=</span> <span class='st'>"gear"</span>),
-        <span class='kw'>selected</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cyl"</span>, <span class='st'>"am"</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2</span>),
+        <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Cylinders"</span> <span class='kw'>=</span> <span class='st'>"cyl"</span>, <span class='st'>"Transmission"</span> <span class='kw'>=</span> <span class='st'>"am"</span>, <span class='st'>"Gears"</span> <span class='kw'>=</span> <span class='st'>"gear"</span>, <span class='st'>"A"</span> <span class='kw'>=</span> <span class='st'>"a"</span>, <span class='st'>"B"</span> <span class='kw'>=</span> <span class='st'>"b"</span>),
+        <span class='kw'>selected</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cyl"</span>, <span class='st'>"am"</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>3</span>),
       <span class='fu'>tableOutput</span>(<span class='st'>"data3"</span>)
     ),
     <span class='fu'>column</span>(<span class='fl'>3</span>,

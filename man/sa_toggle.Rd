@@ -12,8 +12,7 @@ sa_toggle(
   true = "Yes",
   false = "No",
   color = "blue",
-  label_color = "black",
-  text_color = label_color,
+  text_color = "black",
   width = NULL
 )
 
@@ -38,8 +37,6 @@ update_sa_toggle(
 \item{false}{character, right label for \code{FALSE} state.}
 
 \item{color}{active state color.}
-
-\item{label_color}{color of label text.}
 
 \item{text_color}{color of left and right value label text.}
 
@@ -68,11 +65,15 @@ fluidPage(
       actionButton("btn1", "Set to TRUE"),
       actionButton("btn2", "Change label"),
       sa_toggle(
-        "toggle1", "Show text 1", FALSE, "On", "Off",
-        "navyblue", "#000000", "white", "200px"
+        "toggle1", "Show text A", FALSE, "On", "Off",
+        "firebrick", "white", 200
+      ),
+      sa_toggle(
+        "toggle2", "Show text B", TRUE, "On", "Off",
+        "yellowgreen", "black", "100\%"
       )
     ),
-    column(9, textOutput("txt"))
+    column(9, textOutput("txt1"), textOutput("txt2"))
   )
 )
 }
@@ -83,8 +84,8 @@ server <- function(input, output, session) {
     update_sa_toggle(session, "toggle1", value = TRUE)
   })
   observeEvent(input$btn2, {
-    update_sa_toggle(session, "toggle1", label = "Show text 2",
-                     true = "Yes", false = "no")
+    update_sa_toggle(session, "toggle1", label = "Show text A 2",
+                     true = "Yes", false = "No")
   })
 }
 
