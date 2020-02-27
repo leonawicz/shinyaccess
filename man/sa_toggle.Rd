@@ -57,6 +57,7 @@ This input returns \code{TRUE} or \code{FALSE} similar to
 }
 \examples{
 if (interactive()) {
+library(shiny)
 
 ui <- function(request) {
 fluidPage(

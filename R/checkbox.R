@@ -15,6 +15,7 @@
 #'
 #' @examples
 #' if (interactive()) {
+#' library(shiny)
 #'
 #' ui <- function(request) {
 #' fluidPage(

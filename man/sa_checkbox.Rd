@@ -31,6 +31,7 @@ A Shiny checkbox input.
 }
 \examples{
 if (interactive()) {
+library(shiny)
 
 ui <- function(request) {
 fluidPage(
