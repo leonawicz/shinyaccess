@@ -1,6 +1,6 @@
 #' Toggle input
 #'
-#' A binary toggle Shiny input.
+#' A Shiny binary toggle input.
 #'
 #' This input returns \code{TRUE} or \code{FALSE} similar to
 #' \code{shiny::checkboxInput}.

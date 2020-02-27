@@ -49,7 +49,7 @@ update_sa_toggle(
 HTML element that can be added to a UI definition.
 }
 \description{
-A binary toggle Shiny input.
+A Shiny binary toggle input.
 }
 \details{
 This input returns \code{TRUE} or \code{FALSE} similar to
@@ -72,7 +72,7 @@ fluidPage(
       ),
       sa_toggle(
         "toggle2", "Show text B", TRUE, "On", "Off",
-        "yellowgreen", "black", "100\%"
+        "yellowgreen", "black"
       )
     ),
     column(9, textOutput("txt1"), textOutput("txt2"))

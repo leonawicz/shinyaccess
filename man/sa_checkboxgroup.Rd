@@ -10,6 +10,7 @@ sa_checkboxgroup(
   label,
   choices = NULL,
   selected = NULL,
+  color = "black",
   ncol = 1,
   inline = FALSE,
   width = NULL,
@@ -39,6 +40,8 @@ logicals and numbers) will be coerced to strings.}
 
 \item{selected}{The values that should be initially selected, if any.}
 
+\item{color}{character, hex or R color name.}
+
 \item{ncol}{number of columns when \code{inline = FALSE}. Will auto-truncate
 to the number of choices if exceeded.}
 
@@ -55,7 +58,7 @@ Vector of names and values, must have same length.}
 A list of HTML elements that can be added to a UI definition.
 }
 \description{
-Checkbox group input
+A Shiny checkbox group input.
 }
 \examples{
 if (interactive()) {
@@ -85,14 +88,14 @@ fluidPage(
       sa_checkboxgroup(
         "cb3", "SA1 - Variables to show:",
         c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear", "A" = "a", "B" = "b"),
-        selected = c("cyl", "am"), ncol = 3),
+        selected = c("cyl", "am"), "dodgerblue", ncol = 3),
       tableOutput("data3")
     ),
     column(3,
     actionButton("btn4", "Set to transmission and gear"),
       sa_checkboxgroup(
         "cb4", "SA2 - Variables to show:",
-        selected = c("cyl", "am"),
+        selected = c("cyl", "am"), "firebrick",
         choiceNames = c("Cylinders", "Transmission", "Gears"),
         choiceValues = c("cyl", "am", "gear"), inline = TRUE),
       tableOutput("data4")

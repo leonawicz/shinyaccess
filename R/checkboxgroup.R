@@ -1,5 +1,7 @@
 #' Checkbox group input
 #'
+#' A Shiny checkbox group input.
+#'
 #' @param inputId The id of the input object.
 #' @param label The label to set for the input object.
 #' @param choices List of values to show checkboxes for. If elements of the
@@ -8,6 +10,7 @@
 #' provided, and vice-versa. The values should be strings; other types (such as
 #' logicals and numbers) will be coerced to strings.
 #' @param selected The values that should be initially selected, if any.
+#' @param color character, hex or R color name.
 #' @param ncol number of columns when \code{inline = FALSE}. Will auto-truncate
 #' to the number of choices if exceeded.
 #' @param inline if \code{TRUE}, \code{ncol} is ignored.
@@ -48,14 +51,14 @@
 #'       sa_checkboxgroup(
 #'         "cb3", "SA1 - Variables to show:",
 #'         c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear", "A" = "a", "B" = "b"),
-#'         selected = c("cyl", "am"), ncol = 3),
+#'         selected = c("cyl", "am"), color = "dodgerblue", ncol = 3),
 #'       tableOutput("data3")
 #'     ),
 #'     column(3,
 #'     actionButton("btn4", "Set to transmission and gear"),
 #'       sa_checkboxgroup(
 #'         "cb4", "SA2 - Variables to show:",
-#'         selected = c("cyl", "am"),
+#'         selected = c("cyl", "am"), color = "firebrick",
 #'         choiceNames = c("Cylinders", "Transmission", "Gears"),
 #'         choiceValues = c("cyl", "am", "gear"), inline = TRUE),
 #'       tableOutput("data4")
@@ -95,8 +98,9 @@
 #'
 #' }
 sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
-                             ncol = 1, inline = FALSE, width = NULL,
-                             choiceNames = NULL, choiceValues = NULL){
+                             color = "#333333", ncol = 1, inline = FALSE,
+                             width = NULL, choiceNames = NULL,
+                             choiceValues = NULL){
   args <- normalizeChoicesArgs(choices, choiceNames, choiceValues)
   selected <- shiny::restoreInput(id = inputId, default = selected)
   v <- unlist(args$choiceValues)
@@ -119,6 +123,9 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
     singleton(tags$head(includeScript(
       system.file("resources/input-binding-sa-checkboxgroup.js", package = "shinyaccess")
     ))),
+    tags$style(paste0(
+      "#", inputId, " input[checked] {color: ", colorname_to_hex(color), "; }"
+    )),
     HTML(
       paste0("<fieldset id='", inputId, "' class='sa-input-checkboxgrp' style='width:auto;'>",
       "\n  <legend>", label, "</legend>", x, "\n</fieldset>\n")
