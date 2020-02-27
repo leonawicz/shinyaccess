@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Toggle input — sa_toggle • shinyaccess</title>
+<title>Checkbox input — sa_checkbox • shinyaccess</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -44,8 +44,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Toggle input — sa_toggle" />
-<meta property="og:description" content="A Shiny binary toggle input." />
+<meta property="og:title" content="Checkbox input — sa_checkbox" />
+<meta property="og:description" content="A Shiny checkbox input." />
 <meta property="og:image" content="https://leonawicz.github.io/shinyaccess/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -118,34 +118,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Toggle input</h1>
-    <small class="dont-index">Source: <a href='https://github.com/leonawicz/shinyaccess/blob/master/R/toggle.R'><code>R/toggle.R</code></a></small>
-    <div class="hidden name"><code>sa_toggle.Rd</code></div>
+    <h1>Checkbox input</h1>
+    <small class="dont-index">Source: <a href='https://github.com/leonawicz/shinyaccess/blob/master/R/checkbox.R'><code>R/checkbox.R</code></a></small>
+    <div class="hidden name"><code>sa_checkbox.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A Shiny binary toggle input.</p>
+    <p>A Shiny checkbox input.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sa_toggle</span>(
-  <span class='no'>inputId</span>,
-  <span class='no'>label</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>true</span> <span class='kw'>=</span> <span class='st'>"Yes"</span>,
-  <span class='kw'>false</span> <span class='kw'>=</span> <span class='st'>"No"</span>,
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"blue"</span>,
-  <span class='kw'>text_color</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)
+    <pre class="usage"><span class='fu'>sa_checkbox</span>(<span class='no'>inputId</span>, <span class='no'>label</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#555555"</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>update_sa_toggle</span>(
-  <span class='no'>session</span>,
-  <span class='no'>inputId</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>true</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>false</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+<span class='fu'>update_sa_checkbox</span>(<span class='no'>session</span>, <span class='no'>inputId</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,20 +147,8 @@
       <td><p>logical, default toggle state.</p></td>
     </tr>
     <tr>
-      <th>true</th>
-      <td><p>character, left label for <code>TRUE</code> state.</p></td>
-    </tr>
-    <tr>
-      <th>false</th>
-      <td><p>character, right label for <code>FALSE</code> state.</p></td>
-    </tr>
-    <tr>
       <th>color</th>
-      <td><p>active state color.</p></td>
-    </tr>
-    <tr>
-      <th>text_color</th>
-      <td><p>color of left and right value label text.</p></td>
+      <td><p>character, hex or R color name.</p></td>
     </tr>
     <tr>
       <th>width</th>
@@ -192,10 +164,6 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>HTML element that can be added to a UI definition.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This input returns <code>TRUE</code> or <code>FALSE</code> similar to
-<code><a href='https://rdrr.io/pkg/shiny/man/checkboxInput.html'>shiny::checkboxInput</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
@@ -209,14 +177,8 @@
     <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/column.html'>column</a></span>(<span class='fl'>3</span>,
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/actionButton.html'>actionButton</a></span>(<span class='st'>"btn1"</span>, <span class='st'>"Set to TRUE"</span>),
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/actionButton.html'>actionButton</a></span>(<span class='st'>"btn2"</span>, <span class='st'>"Change label"</span>),
-      <span class='fu'>sa_toggle</span>(
-        <span class='st'>"toggle1"</span>, <span class='st'>"Show text A"</span>, <span class='fl'>FALSE</span>, <span class='st'>"On"</span>, <span class='st'>"Off"</span>,
-        <span class='st'>"firebrick"</span>, <span class='st'>"white"</span>, <span class='fl'>200</span>
-      ),
-      <span class='fu'>sa_toggle</span>(
-        <span class='st'>"toggle2"</span>, <span class='st'>"Show text B"</span>, <span class='fl'>TRUE</span>, <span class='st'>"On"</span>, <span class='st'>"Off"</span>,
-        <span class='st'>"yellowgreen"</span>, <span class='st'>"black"</span>
-      )
+      <span class='fu'>sa_checkbox</span>(<span class='st'>"cb1"</span>, <span class='st'>"Show text A"</span>, <span class='fl'>FALSE</span>, <span class='st'>"firebrick"</span>, <span class='fl'>200</span>),
+      <span class='fu'>sa_checkbox</span>(<span class='st'>"cb2"</span>, <span class='st'>"Show text B"</span>, <span class='fl'>TRUE</span>)
     ),
     <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/column.html'>column</a></span>(<span class='fl'>9</span>, <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/textOutput.html'>textOutput</a></span>(<span class='st'>"txt1"</span>), <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/textOutput.html'>textOutput</a></span>(<span class='st'>"txt2"</span>))
   )
@@ -224,14 +186,13 @@
 }
 
 <span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>, <span class='no'>session</span>) {
-  <span class='no'>output</span>$<span class='no'>txt1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderText.html'>renderText</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"Toggle input 1 is set to"</span>, <span class='no'>input</span>$<span class='no'>toggle1</span>))
-  <span class='no'>output</span>$<span class='no'>txt2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderText.html'>renderText</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"Toggle input 2 is set to"</span>, <span class='no'>input</span>$<span class='no'>toggle2</span>))
+  <span class='no'>output</span>$<span class='no'>txt1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderText.html'>renderText</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"Checkbox 1 input is set to"</span>, <span class='no'>input</span>$<span class='no'>cb1</span>))
+  <span class='no'>output</span>$<span class='no'>txt2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderText.html'>renderText</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"Checkbox 2 input is set to"</span>, <span class='no'>input</span>$<span class='no'>cb2</span>))
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>btn1</span>, {
-    <span class='fu'>update_sa_toggle</span>(<span class='no'>session</span>, <span class='st'>"toggle1"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <span class='fu'>update_sa_checkbox</span>(<span class='no'>session</span>, <span class='st'>"cb1"</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
   })
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>btn2</span>, {
-    <span class='fu'>update_sa_toggle</span>(<span class='no'>session</span>, <span class='st'>"toggle1"</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"Show text A 2"</span>,
-                     <span class='kw'>true</span> <span class='kw'>=</span> <span class='st'>"Yes"</span>, <span class='kw'>false</span> <span class='kw'>=</span> <span class='st'>"No"</span>)
+    <span class='fu'>update_sa_checkbox</span>(<span class='no'>session</span>, <span class='st'>"cb1"</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"Show text A 2"</span>)
   })
 }
 
@@ -244,7 +205,6 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
