@@ -1,12 +1,13 @@
 /* Checkbox */
+.sa-input-checkbox {
+  position: relative;
+}
 .sa-input-checkbox input {
   position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
-  padding: 0;
-  border: 0;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  opacity: 0;
 }
 .sa-input-checkbox input:focus + label {
   outline: dashed 2px #d3d3d3;
@@ -48,14 +49,15 @@
   list-style: none;
   padding-left: 10px;
 }
+.sa-input-checkboxgrp .sa-options-group .sa-option-item {
+  position: relative;
+}
 .sa-input-checkboxgrp .sa-options-group .sa-option-item input {
   position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
-  padding: 0;
-  border: 0;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  opacity: 0;
 }
 .sa-input-checkboxgrp .sa-options-group .sa-option-item input:focus + label {
   outline: dashed 2px #d3d3d3;
