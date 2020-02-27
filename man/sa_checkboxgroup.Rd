@@ -10,7 +10,7 @@ sa_checkboxgroup(
   label,
   choices = NULL,
   selected = NULL,
-  color = "black",
+  color = "#333333",
   ncol = 1,
   inline = FALSE,
   width = NULL,
@@ -88,14 +88,14 @@ fluidPage(
       sa_checkboxgroup(
         "cb3", "SA1 - Variables to show:",
         c("Cylinders" = "cyl", "Transmission" = "am", "Gears" = "gear", "A" = "a", "B" = "b"),
-        selected = c("cyl", "am"), "dodgerblue", ncol = 3),
+        selected = c("cyl", "am"), color = "dodgerblue", ncol = 3),
       tableOutput("data3")
     ),
     column(3,
     actionButton("btn4", "Set to transmission and gear"),
       sa_checkboxgroup(
         "cb4", "SA2 - Variables to show:",
-        selected = c("cyl", "am"), "firebrick",
+        selected = c("cyl", "am"), color = "firebrick",
         choiceNames = c("Cylinders", "Transmission", "Gears"),
         choiceValues = c("cyl", "am", "gear"), inline = TRUE),
       tableOutput("data4")

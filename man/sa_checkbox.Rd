@@ -5,7 +5,7 @@
 \alias{update_sa_checkbox}
 \title{Checkbox input}
 \usage{
-sa_checkbox(inputId, label, value = FALSE, color = "blue", width = NULL)
+sa_checkbox(inputId, label, value = FALSE, color = "#333333", width = NULL)
 
 update_sa_checkbox(session, inputId, label = NULL, value = NULL)
 }
@@ -41,8 +41,7 @@ fluidPage(
       actionButton("btn1", "Set to TRUE"),
       actionButton("btn2", "Change label"),
       sa_checkbox("cb1", "Show text A", FALSE, "firebrick", 200),
-      sa_checkbox("cb2", "Show text B", TRUE, "yellowgreen")
-      )
+      sa_checkbox("cb2", "Show text B", TRUE)
     ),
     column(9, textOutput("txt1"), textOutput("txt2"))
   )
@@ -50,12 +49,13 @@ fluidPage(
 }
 
 server <- function(input, output, session) {
-  output$txt <- renderText(paste("Checkbox1 input is set to", input$cb1))
+  output$txt1 <- renderText(paste("Checkbox 1 input is set to", input$cb1))
+  output$txt2 <- renderText(paste("Checkbox 2 input is set to", input$cb2))
   observeEvent(input$btn1, {
-    update_sa_toggle(session, "cb1", value = TRUE)
+    update_sa_checkbox(session, "cb1", value = TRUE)
   })
   observeEvent(input$btn2, {
-    update_sa_toggle(session, "cb2", label = "Show text A 2")
+    update_sa_checkbox(session, "cb1", label = "Show text A 2")
   })
 }
 
