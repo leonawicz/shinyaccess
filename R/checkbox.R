@@ -33,12 +33,13 @@
 #' }
 #'
 #' server <- function(input, output, session) {
-#'   output$txt <- renderText(paste("Checkbox1 input is set to", input$cb1))
+#'   output$txt1 <- renderText(paste("Checkbox 1 input is set to", input$cb1))
+#'   output$txt2 <- renderText(paste("Checkbox 2 input is set to", input$cb2))
 #'   observeEvent(input$btn1, {
 #'     update_sa_checkbox(session, "cb1", value = TRUE)
 #'   })
 #'   observeEvent(input$btn2, {
-#'     update_sa_checkbox(session, "cb2", label = "Show text A 2")
+#'     update_sa_checkbox(session, "cb1", label = "Show text A 2")
 #'   })
 #' }
 #'

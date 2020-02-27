@@ -45,7 +45,8 @@
 #' }
 #'
 #' server <- function(input, output, session) {
-#'   output$txt <- renderText(paste("Toggle input is set to", input$toggle1))
+#'   output$txt1 <- renderText(paste("Toggle input 1 is set to", input$toggle1))
+#'   output$txt2 <- renderText(paste("Toggle input 2 is set to", input$toggle2))
 #'   observeEvent(input$btn1, {
 #'     update_sa_toggle(session, "toggle1", value = TRUE)
 #'   })
