@@ -5,7 +5,6 @@ $.extend(saCheckboxGroupBinding, {
     return $(scope).find('.sa-input-checkboxgrp');
   },
   getValue: function(el) {
-    console.log('getValue', el)
     // Find all inputs in checkbox groups and create an array
     let inputElements = Array.from($(el).find('input'));
     // Find input elements that are checked and find their value
@@ -13,7 +12,6 @@ $.extend(saCheckboxGroupBinding, {
     return values;
   },
   setValue: function(el, value) {
-    console.log('setValue', el)
     // Clear all checkboxes
     $(el).find('input').prop('checked', false);
     // Loop through which checkboxes should be checked based on the value array and update the checkbox
@@ -60,7 +58,6 @@ $.extend(saCheckboxGroupBinding, {
     $(el).trigger('change');
   },
   subscribe: function(el, callback) {
-    console.log('subscribe', el, callback)
     $(el).on('change.saCheckboxGroupBinding', function(event) {
       callback();
     });
