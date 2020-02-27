@@ -5,7 +5,7 @@
 \alias{update_sa_checkbox}
 \title{Checkbox input}
 \usage{
-sa_checkbox(inputId, label, value = FALSE, color = "#333333", width = NULL)
+sa_checkbox(inputId, label, value = FALSE, color = "#555555", width = NULL)
 
 update_sa_checkbox(session, inputId, label = NULL, value = NULL)
 }

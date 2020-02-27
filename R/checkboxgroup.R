@@ -98,7 +98,7 @@
 #'
 #' }
 sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
-                             color = "#333333", ncol = 1, inline = FALSE,
+                             color = "#555555", ncol = 1, inline = FALSE,
                              width = NULL, choiceNames = NULL,
                              choiceValues = NULL){
   args <- normalizeChoicesArgs(choices, choiceNames, choiceValues)
@@ -124,7 +124,7 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
       system.file("resources/input-binding-sa-checkboxgroup.js", package = "shinyaccess")
     ))),
     tags$style(paste0(
-      "#", inputId, " input[checked] {color: ", colorname_to_hex(color), "; }"
+      "#", inputId, " input:checked + label:before { background-color: ", colorname_to_hex(color), "; }"
     )),
     HTML(
       paste0("<fieldset id='", inputId, "' class='sa-input-checkboxgrp' style='width:auto;'>",

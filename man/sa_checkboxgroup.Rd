@@ -10,7 +10,7 @@ sa_checkboxgroup(
   label,
   choices = NULL,
   selected = NULL,
-  color = "#333333",
+  color = "#555555",
   ncol = 1,
   inline = FALSE,
   width = NULL,

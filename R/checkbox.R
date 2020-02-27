@@ -46,10 +46,10 @@
 #' shinyApp(ui, server, enableBookmarking = "url")
 #'
 #' }
-sa_checkbox <- function(inputId, label, value = FALSE, color = "#333333",
+sa_checkbox <- function(inputId, label, value = FALSE, color = "#555555",
                         width = NULL){
   id <- paste0("sa-input-checkbox-", inputId)
-  x <- div(class = "sa-input-checkbox",
+  x <- div(id = inputId, class = "sa-input-checkbox",
     tagList(tags$input(id = id, type = "checkbox"), tags$label(`for` = id, label))
   )
   tagList(
@@ -57,7 +57,7 @@ sa_checkbox <- function(inputId, label, value = FALSE, color = "#333333",
       system.file("resources/input-binding-sa-checkbox.js", package = "shinyaccess")
     ))),
     tags$style(paste0(
-      "#", inputId, " input[checked] {color: ", colorname_to_hex(color), "; }"
+      "#", inputId, " input:checked + label:before {background-color: ", colorname_to_hex(color), "; }"
     )),
     x
   )
