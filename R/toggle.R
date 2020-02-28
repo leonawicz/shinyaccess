@@ -62,6 +62,7 @@
 #' }
 sa_toggle <- function(inputId, label, value = FALSE, true = "Yes", false = "No",
                       color = "blue", text_color = "black", width = NULL){
+  value <- shiny::restoreInput(id = inputId, default = value)
   x <- paste0(
     '<div id="', inputId, '" class="sa-input-toggle">',
     '\n  <label>', label, '</label>',

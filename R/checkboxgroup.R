@@ -128,7 +128,7 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
       "#", inputId, " input:checked + label:before { background-color: ", colorname_to_hex(color), "; }"
     )),
     HTML(
-      paste0("<fieldset id='", inputId, "' class='sa-input-checkboxgrp' style='width:auto;'>",
+      paste0("<fieldset id='", inputId, "' class='sa-input-checkboxgrp shiny-input-container' style='width:auto;'>",
       "\n  <legend>", label, "</legend>", x, "\n</fieldset>\n")
     )
   )
@@ -139,7 +139,7 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
     paste0(
       '\n    <li class="sa-option-item"',
       if(inline) ' style="display:inline-block;"', '>',
-      '\n      <input type="checkbox" id="sa-checkboxgroup-', v[i],
+      '\n      <input type="checkbox" id="sa-checkboxgroup-', inputId, '-', v[i],
       '" name="sa-checkboxgroup-', inputId, '" value="', v[i], '"',
       if(v[i] %in% selected) ' checked="checked"', '></input>',
       '\n      <label for="sa-checkboxgroup-', v[i], '">', vname[i],

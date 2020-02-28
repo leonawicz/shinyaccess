@@ -24,24 +24,6 @@ $.extend(saCheckboxGroupBinding, {
       }
     }
   },
-    getState: function(el) {
-    // Store checkbox options in an array
-    let options = Array.from($(el).find('li'));
-    // Replace each value with an object containin the option value and label
-    for (var i = 0; i < options.length; i++) {
-      options[i] = {
-        value: options[i].children[0].value,
-        label: options[i].children[1].innerHTML
-      };
-    }
-    let labelText = $(el).find('legend').text();
-    let state = {
-      label: labelText,
-      value: this.getValue(el),
-      options: options
-    };
-    return state;
-  },
   updateLabel: function(el, label) {
     $(el).find('legend').text(label);
   },
@@ -67,7 +49,7 @@ $.extend(saCheckboxGroupBinding, {
   },
   unsubscribe: function(el) {
     $(el).off('.saCheckboxGroupBinding');
-  },
+  }
 });
 
 Shiny.inputBindings.register(saCheckboxGroupBinding, 'shinyaccess.saCheckboxGroupBinding');

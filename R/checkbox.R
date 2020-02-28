@@ -49,9 +49,12 @@
 #' }
 sa_checkbox <- function(inputId, label, value = FALSE, color = "#555555",
                         width = NULL){
+  value <- shiny::restoreInput(id = inputId, default = value)
   id <- paste0("sa-input-checkbox-", inputId)
+  inputTag <- tags$input(id = id, type = "checkbox")
+  if(!is.null(value) && value) inputTag$attribs$checked <- "checked"
   x <- div(id = inputId, class = "sa-input-checkbox",
-    tagList(tags$input(id = id, type = "checkbox"), tags$label(`for` = id, label))
+    tagList(inputTag, tags$label(`for` = id, label))
   )
   tagList(
     singleton(tags$head(includeScript(
