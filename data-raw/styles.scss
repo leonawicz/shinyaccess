@@ -1,7 +1,7 @@
 @import "mixins.scss";
 
-// Checkbox group
-.sa-input-checkboxgrp {
+// Checkbox group and radio button
+.sa-input-checkboxgrp, .sa-input-radio {
   legend {
     border-bottom: none;
     font-size: 17px;
@@ -13,18 +13,23 @@
     float: left;
     list-style: none;
     padding-left: 10px;
-      .sa-option-item {
-        position: relative;
-          input {
-            @include checkbox-hidden-input-style;
-          }
-          label {
-            @include checkbox-label-style;
-            &:before {
-              @include checkbox-custom-input-style;
-            }
-          }
-      }
+  }
+  .sa-option-item {
+    margin-right: 10px;
+    position: relative;
+  }
+}
+
+// Checkbox group specific styles
+.sa-input-checkboxgrp {
+  input {
+    @include checkbox-hidden-input-style;
+  }
+  label {
+    @include checkbox-label-style;
+    &:before {
+      @include checkbox-custom-input-style;
+    }
   }
 }
 

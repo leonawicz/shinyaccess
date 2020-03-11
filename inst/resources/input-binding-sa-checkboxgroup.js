@@ -26,7 +26,6 @@ $.extend(saCheckboxGroupBinding, {
     $(el).find('legend').text(label);
   },
   receiveMessage: function(el, data) {
-    console.log('receiveMessage', el)
     // If data.options exist, replace all the options with new ones
     if (data.hasOwnProperty('options')) {
       $(el).find('.sa-options-group').remove();

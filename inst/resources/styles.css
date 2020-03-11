@@ -37,48 +37,50 @@
   margin-right: 8px;
 }
 
-.sa-input-checkboxgrp legend {
+.sa-input-checkboxgrp legend, .sa-input-radio legend {
   border-bottom: none;
   font-size: 17px;
   margin-bottom: 7px;
   padding-left: 10px;
 }
-.sa-input-checkboxgrp .sa-options-group {
+.sa-input-checkboxgrp .sa-options-group, .sa-input-radio .sa-options-group {
   display: inline-block;
   float: left;
   list-style: none;
   padding-left: 10px;
 }
-.sa-input-checkboxgrp .sa-options-group .sa-option-item {
+.sa-input-checkboxgrp .sa-option-item, .sa-input-radio .sa-option-item {
+  margin-right: 10px;
   position: relative;
 }
-.sa-input-checkboxgrp .sa-options-group .sa-option-item input {
+
+.sa-input-checkboxgrp input {
   position: absolute;
   height: 100%;
   width: 100%;
   margin: 0;
   opacity: 0;
 }
-.sa-input-checkboxgrp .sa-options-group .sa-option-item input:focus + label {
+.sa-input-checkboxgrp input:focus + label {
   outline: dashed 2px #d3d3d3;
   outline-offset: 5px;
 }
-.sa-input-checkboxgrp .sa-options-group .sa-option-item input:checked + label:before {
+.sa-input-checkboxgrp input:checked + label:before {
   background-color: #707070;
 }
-.sa-input-checkboxgrp .sa-options-group .sa-option-item input:focus + label {
+.sa-input-checkboxgrp input:focus + label {
   outline: dashed 2px #d3d3d3;
   outline-offset: 5px;
 }
-.sa-input-checkboxgrp .sa-options-group .sa-option-item input:focus:not(:focus-visible) {
+.sa-input-checkboxgrp input:focus:not(:focus-visible) {
   outline: none;
 }
-.sa-input-checkboxgrp .sa-options-group .sa-option-item label {
+.sa-input-checkboxgrp label {
   font-size: 15px;
   font-weight: normal;
   display: inline-block;
 }
-.sa-input-checkboxgrp .sa-options-group .sa-option-item label:before {
+.sa-input-checkboxgrp label:before {
   content: "";
   display: inline-block;
   vertical-align: middle;
