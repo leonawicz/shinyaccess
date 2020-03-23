@@ -43,6 +43,9 @@
   margin-bottom: 7px;
   padding-left: 10px;
 }
+.sa-input-checkboxgrp label, .sa-input-radio label {
+  font-weight: normal;
+}
 .sa-input-checkboxgrp .sa-options-group, .sa-input-radio .sa-options-group {
   display: inline-block;
   float: left;
@@ -52,6 +55,10 @@
 .sa-input-checkboxgrp .sa-option-item, .sa-input-radio .sa-option-item {
   margin-right: 10px;
   position: relative;
+}
+
+.sa-input-radio input {
+  margin-right: 6px;
 }
 
 .sa-input-checkboxgrp input {

@@ -8,6 +8,9 @@
     margin-bottom: 7px;
     padding-left: 10px;
   }
+  label{
+    font-weight: normal;
+  }
   .sa-options-group {
     display: inline-block;
     float: left;
@@ -20,7 +23,14 @@
   }
 }
 
-// Checkbox group specific styles
+// Radio button specific
+.sa-input-radio {
+  input{
+    margin-right: 6px;
+  }
+}
+
+// Checkbox group specific
 .sa-input-checkboxgrp {
   input {
     @include checkbox-hidden-input-style;
