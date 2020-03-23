@@ -53,7 +53,7 @@
 #'     column(3,
 #'     actionButton("btn4", "Reset radio 4 to 'gear'"),
 #'       sa_radio(
-#'         "cb4", "SA2 (inline) - Choose a variable:",
+#'         "radio4", "SA2 (inline) - Choose a variable:",
 #'         selected = "cyl",
 #'         choiceNames = c("Cylinders", "Transmission", "Gears"),
 #'         choiceValues = c("cyl", "am", "gear"), inline = TRUE),
