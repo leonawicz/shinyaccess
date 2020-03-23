@@ -111,11 +111,8 @@ sa_radio <- function(inputId, label, choices = NULL, selected = NULL,
     ))),
     HTML(
       paste0(
-        '<fieldset class="sa-input-radio">',
-        '\n  <legend>', label, '</legend>',
-        '\n  <ul class="sa-options-group">',
-        x,
-        '\n  </ul>\n</fieldset>'
+        '<fieldset id="', inputId, '" class="sa-input-radio">',
+        '\n  <legend>', label, '</legend>', x, '\n</fieldset>'
       )
     )
   )
@@ -125,15 +122,15 @@ sa_radio <- function(inputId, label, choices = NULL, selected = NULL,
   x <- sapply(seq_along(v), function(i){
     paste0(
       '\n    <li class="sa-option-item">',
-      '\n      <input type="radio" id="sa-checkboxgroup-', inputId, '-', v[i],
+      '\n      <input type="radio" id="sa-radio-', inputId, '-', v[i],
       '" name="sa-radio-', inputId, '" value="', v[i], '"',
       if(v[i] %in% selected) ' checked', '>',
-      '\n      <label for="sa-checkboxgroup-', inputId, '-', v[i], '">',
+      '\n      <label for="sa-rdio-', inputId, '-', v[i], '">',
       vname[i], '</label>',
       '\n    </li>'
     )
   })
-  x <- paste(x, collapse = "\n      ")
+  x <- paste(x, collapse = "\n    ")
   paste0('\n  <ul class="sa-options-group">', x, '\n  </ul>', sep = "\n")
 }
 

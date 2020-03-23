@@ -128,7 +128,7 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
       "#", inputId, " input:checked + label:before { background-color: ", colorname_to_hex(color), "; }"
     )),
     HTML(
-      paste0("<fieldset id='", inputId, "' class='sa-input-checkboxgrp shiny-input-container' style='width:auto;'>",
+      paste0('<fieldset id="', inputId, '" class="sa-input-checkboxgrp shiny-input-container" style="width:auto;">',
       "\n  <legend>", label, "</legend>", x, "\n</fieldset>\n")
     )
   )
