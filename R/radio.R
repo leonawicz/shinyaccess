@@ -121,7 +121,8 @@ sa_radio <- function(inputId, label, choices = NULL, selected = NULL,
 .sa_radio_opts <- function(inputId, v, vname, selected, inline){
   x <- sapply(seq_along(v), function(i){
     paste0(
-      '\n    <li class="sa-option-item">',
+      '\n    <li class="sa-option-item"',
+      if(inline) ' style="display:inline-block;"', '>',
       '\n      <input type="radio" id="sa-radio-', inputId, '-', v[i],
       '" name="sa-radio-', inputId, '" value="', v[i], '"',
       if(v[i] %in% selected) ' checked', '>',
