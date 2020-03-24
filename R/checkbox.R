@@ -6,8 +6,8 @@
 #' @param label The label to set for the input object.
 #' @param value logical, default toggle state.
 #' @param color character, hex or R color name.
-#' @param width The width of the input, e.g. '400px', or '100%'; see
-#' \code{shiny::validateCssUnit}.
+#' @param width The width of the input, e.g. \code{'400px'}, or \code{'100%'};
+#' see \code{shiny::validateCssUnit}.
 #' @param session The session object passed to function given to shinyServer.
 #'
 #' @return HTML element that can be added to a UI definition.

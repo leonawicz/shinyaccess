@@ -18,9 +18,6 @@ update_sa_checkbox(session, inputId, label = NULL, value = NULL)
 
 \item{color}{character, hex or R color name.}
 
-\item{width}{The width of the input, e.g. '400px', or '100%'; see
-\code{shiny::validateCssUnit}.}
-
 \item{session}{The session object passed to function given to shinyServer.}
 }
 \value{

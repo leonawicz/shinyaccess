@@ -40,9 +40,6 @@ update_sa_toggle(
 
 \item{text_color}{color of left and right value label text.}
 
-\item{width}{The width of the input, e.g. '400px', or '100%'; see
-\code{shiny::validateCssUnit}.}
-
 \item{session}{The session object passed to function given to shinyServer.}
 }
 \value{
