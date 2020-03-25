@@ -44,38 +44,76 @@
 }
 
 //Button group
-.sa-buttongroup .sa-input-radio{
-  .sa-options-group {
-    display: flex;
-    margin-bottom: 36px;
-    overflow: hidden;
-    li {
-      margin-right: 0;
-      input {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        border: 0;
-        opacity: 0;
-        cursor: pointer;
-        &:checked + label {
-        	background-color: #a5dc86;
-        	box-shadow: none;
+.sa-buttongroup {
+  .sa-input-radio {
+    .sa-options-group {
+      display: flex;
+      margin-bottom: 36px;
+      li {
+        margin-right: 0;
+        input {
+          border: 0;
+          cursor: pointer;
+          height: 100%;
+          opacity: 0;
+          position: absolute;
+          width: 100%;
+          &:focus{
+            outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px;
+          }
+          &:checked + label {
+          	background-color: #a5dc86;
+          	box-shadow: none;
+          }
         }
-      }
-      label {
-      	background-color: #e4e4e4;
-      	color: rgba(0, 0, 0, 0.6);
-      	font-size: 14px;
-      	padding: 8px 16px;
-      	line-height: inherit;
-      	margin-right: -1px;
-      	border: 1px solid rgba(0, 0, 0, 0.2);
-      	&:hover{
-      	}
+        label {
+        	background-color: #e4e4e4;
+        	border: 1px solid rgba(0, 0, 0, 0.2);
+        	color: rgba(0, 0, 0, 0.6);
+        	font-size: 14px;
+        	line-height: initial;
+        	margin-right: -1px;
+        	padding: 8px 16px;
+        }
       }
     }
   }
+
+  //Toggle buttons
+  .sa-input-checkboxgrp {
+    .sa-options-group {
+      display: flex;
+      margin-bottom: 36px;
+      li {
+        margin-right: 0;
+        input {
+          cursor: pointer;
+          &:focus{
+            outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px;
+          }
+          &:checked + label {
+          	background-color: #a5dc86;
+          	box-shadow: none;
+          }
+        }
+        label {
+        	background-color: #e4e4e4;
+        	border: 1px solid rgba(0, 0, 0, 0.2);
+        	color: rgba(0, 0, 0, 0.6);
+        	font-size: 14px;
+        	line-height: initial;
+        	margin-right: -1px;
+        	padding: 8px 16px;
+        	&:before{
+        	  display: none;
+        	}
+        }
+      }
+    }
+  }
+
 }
 
 // Toggle button

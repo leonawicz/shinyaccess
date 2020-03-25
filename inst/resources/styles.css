@@ -8,16 +8,8 @@
   margin: 0;
   opacity: 0;
 }
-.sa-input-checkbox input:focus + label {
-  outline: dashed 2px #d3d3d3;
-  outline-offset: 5px;
-}
 .sa-input-checkbox input:checked + label:before {
   background-color: #707070;
-}
-.sa-input-checkbox input:focus + label {
-  outline: dashed 2px #d3d3d3;
-  outline-offset: 5px;
 }
 .sa-input-checkbox input:focus:not(:focus-visible) {
   outline: none;
@@ -68,16 +60,8 @@
   margin: 0;
   opacity: 0;
 }
-.sa-input-checkboxgrp input:focus + label {
-  outline: dashed 2px #d3d3d3;
-  outline-offset: 5px;
-}
 .sa-input-checkboxgrp input:checked + label:before {
   background-color: #707070;
-}
-.sa-input-checkboxgrp input:focus + label {
-  outline: dashed 2px #d3d3d3;
-  outline-offset: 5px;
 }
 .sa-input-checkboxgrp input:focus:not(:focus-visible) {
   outline: none;
@@ -100,18 +84,21 @@
 .sa-buttongroup .sa-input-radio .sa-options-group {
   display: flex;
   margin-bottom: 36px;
-  overflow: hidden;
 }
 .sa-buttongroup .sa-input-radio .sa-options-group li {
   margin-right: 0;
 }
 .sa-buttongroup .sa-input-radio .sa-options-group li input {
-  position: absolute;
-  height: 100%;
-  width: 100%;
   border: 0;
-  opacity: 0;
   cursor: pointer;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+}
+.sa-buttongroup .sa-input-radio .sa-options-group li input:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 .sa-buttongroup .sa-input-radio .sa-options-group li input:checked + label {
   background-color: #a5dc86;
@@ -119,13 +106,44 @@
 }
 .sa-buttongroup .sa-input-radio .sa-options-group li label {
   background-color: #e4e4e4;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   color: rgba(0, 0, 0, 0.6);
   font-size: 14px;
-  padding: 8px 16px;
-  line-height: inherit;
+  line-height: initial;
   margin-right: -1px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 8px 16px;
 }
+.sa-buttongroup .sa-input-checkboxgrp .sa-options-group {
+  display: flex;
+  margin-bottom: 36px;
+}
+.sa-buttongroup .sa-input-checkboxgrp .sa-options-group li {
+  margin-right: 0;
+}
+.sa-buttongroup .sa-input-checkboxgrp .sa-options-group li input {
+  cursor: pointer;
+}
+.sa-buttongroup .sa-input-checkboxgrp .sa-options-group li input:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.sa-buttongroup .sa-input-checkboxgrp .sa-options-group li input:checked + label {
+  background-color: #a5dc86;
+  box-shadow: none;
+}
+.sa-buttongroup .sa-input-checkboxgrp .sa-options-group li label {
+  background-color: #e4e4e4;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  line-height: initial;
+  margin-right: -1px;
+  padding: 8px 16px;
+}
+.sa-buttongroup .sa-input-checkboxgrp .sa-options-group li label:before {
+  display: none;
+}
+
 button.sa-togglebtn[role=switch] {
   align-items: stretch;
   background: #d6dbdb;

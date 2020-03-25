@@ -15,15 +15,15 @@
   margin: 0;
   opacity: 0;
     &:focus + label {
-      outline: dashed 2px #d3d3d3;
-      outline-offset: 5px;
+      //outline: dashed 2px #d3d3d3;
+      //outline-offset: 5px;
     }
     &:checked + label:before {
       background-color: #707070;
     }
     &:focus + label {
-      outline: dashed 2px #d3d3d3;
-      outline-offset: 5px;
+      //outline: dashed 2px #d3d3d3;
+      //outline-offset: 5px;
     }
     &:focus:not(:focus-visible) {
       outline: none;
