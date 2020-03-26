@@ -24,7 +24,10 @@ update_sa_checkboxgroup(
   label = NULL,
   choices = NULL,
   selected = NULL,
-  inline = FALSE
+  ncol = 1,
+  inline = FALSE,
+  choiceNames = NULL,
+  choiceValues = NULL
 )
 }
 \arguments{
@@ -93,7 +96,7 @@ fluidPage(
       tableOutput("data3")
     ),
     column(3,
-    actionButton("btn4", "Set to transmission and gear"),
+    actionButton("btn4", "Update everything (see source code for details)"),
       sa_checkboxgroup(
         "cb4", "SA2 - Variables to show:",
         selected = c("cyl", "am"), color = "firebrick",
@@ -125,10 +128,17 @@ server <- function(input, output, session) {
     updateCheckboxgroup(session, "cb1", selected = character(0))
   })
   observeEvent(input$btn3, {
-    update_sa_checkboxgroup(session, "cb3", selected = character(0))
+    update_sa_checkboxgroup(session, "cb3",
+      label = "New title!", selected = c("cyl", "a")
+    )
   })
   observeEvent(input$btn4, {
-    update_sa_checkboxgroup(session, "cb4", selected = c("am", "gear"))
+    update_sa_checkboxgroup(session, "cb4",
+      label = "New title!",
+      choices = c("am", "gear", "hello world"),
+      ncol = 2,
+      selected = c("am", "gear")
+    )
   })
 }
 

@@ -56,7 +56,7 @@
 #'       tableOutput("data3")
 #'     ),
 #'     column(3,
-#'     actionButton("btn4", "Set to transmission and gear"),
+#'     actionButton("btn4", "Update everything (see source code for details)"),
 #'       sa_checkboxgroup(
 #'         "cb4", "SA2 - Variables to show:",
 #'         selected = c("cyl", "am"), color = "firebrick",
@@ -88,10 +88,17 @@
 #'     updateCheckboxgroup(session, "cb1", selected = character(0))
 #'   })
 #'   observeEvent(input$btn3, {
-#'     update_sa_checkboxgroup(session, "cb3", selected = character(0))
+#'     update_sa_checkboxgroup(session, "cb3",
+#'       label = "New title!", selected = c("cyl", "a")
+#'     )
 #'   })
 #'   observeEvent(input$btn4, {
-#'     update_sa_checkboxgroup(session, "cb4", selected = c("am", "gear"))
+#'     update_sa_checkboxgroup(session, "cb4",
+#'       label = "New title!",
+#'       choices = c("am", "gear", "hello world"),
+#'       ncol = 2,
+#'       selected = c("am", "gear")
+#'     )
 #'   })
 #' }
 #'
@@ -104,22 +111,7 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
                              choiceValues = NULL){
   args <- normalizeChoicesArgs(choices, choiceNames, choiceValues)
   selected <- shiny::restoreInput(id = inputId, default = selected)
-  v <- unlist(args$choiceValues)
-  vname <- unlist(args$choiceNames)
-  if(ncol < 1) stop("`ncol` must be >= 1.", call. = FALSE)
-  ncol <- if(inline) 1 else min(ncol, length(v))
-  if(!inline & ncol > 1){
-    idx <- ceiling(seq_along(v) / ceiling(length(v) / ncol))
-    v <- split(v, idx)
-    vname <- split(vname, idx)
-    x <- sapply(seq_along(v), function(i){
-      .sa_cbg_opts(inputId, v[[i]], vname[[i]], selected, inline)
-    })
-    x <- paste0(x, collapse = "")
-  } else {
-    x <- .sa_cbg_opts(inputId, v, vname, selected, inline)
-  }
-
+  x <- .sa_cbg_opt_groups(inputId, selected, inline, ncol, args)
   tagList(
     singleton(tags$head(includeScript(
       system.file("resources/input-binding-sa-checkboxgroup.js", package = "shinyaccess")
@@ -132,6 +124,24 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
       "\n  <legend>", label, "</legend>", x, "\n</fieldset>\n")
     )
   )
+}
+
+.sa_cbg_opt_groups <- function(inputId, selected, inline, ncol, args){
+  v <- unlist(args$choiceValues)
+  vname <- unlist(args$choiceNames)
+  if(ncol < 1) stop("`ncol` must be >= 1.", call. = FALSE)
+  ncol <- if(inline) 1 else min(ncol, length(v))
+  if(!inline & ncol > 1){
+    idx <- ceiling(seq_along(v) / ceiling(length(v) / ncol))
+    v <- split(v, idx)
+    vname <- split(vname, idx)
+    x <- sapply(seq_along(v), function(i){
+      .sa_cbg_opts(inputId, v[[i]], vname[[i]], selected, inline)
+    })
+    paste0(x, collapse = "")
+  } else {
+    .sa_cbg_opts(inputId, v, vname, selected, inline)
+  }
 }
 
 .sa_cbg_opts <- function(inputId, v, vname, selected, inline){
@@ -154,8 +164,14 @@ sa_checkboxgroup <- function(inputId, label, choices = NULL, selected = NULL,
 #' @export
 update_sa_checkboxgroup <- function(session, inputId, label = NULL,
                                     choices = NULL, selected = NULL,
-                                    inline = FALSE){
-  message <- dropNulls(list(label = label, choices = choices, inline = inline,
-                            value = selected))
+                                    ncol = 1, inline = FALSE,
+                                    choiceNames = NULL, choiceValues = NULL){
+  if(!all(sapply(list(choices, choiceNames, choiceValues), is.null))){
+    args <- normalizeChoicesArgs(choices, choiceNames, choiceValues)
+    opts <- .sa_cbg_opt_groups(inputId, selected, inline, ncol, args)
+  } else {
+    opts <- NULL
+  }
+  message <- dropNulls(list(label = label, options = opts, value = selected))
   session$sendInputMessage(inputId, message)
 }

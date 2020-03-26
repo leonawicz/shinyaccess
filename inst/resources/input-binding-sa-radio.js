@@ -13,7 +13,7 @@ $.extend(saRadioBinding, {
   },
   setValue: function(el, value) {
     console.log("setValue ", el, value);
-    // Loop through which checkboxes should be checked based on the value array and update the checkbox
+    // Loop through which checkboxes should be checked based on the value and update the checkbox
     let inputElements = Array.from($(el).find('input'));
     for(let i = 0; i < inputElements.length; i++){
       if(inputElements[i].value === value) inputElements[i].checked = true;
@@ -32,6 +32,8 @@ $.extend(saRadioBinding, {
     if(data.hasOwnProperty('value')) this.setValue(el, data.value);
     //If data.label exists, update the legend element
     if(data.hasOwnProperty('label')) this.updateLabel(el, data.label);
+
+    $(el).trigger('change');
   },
   subscribe: function(el, callback) {
     $(el).on('change.saRadioBinding', function(event) {

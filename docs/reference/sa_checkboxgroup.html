@@ -146,7 +146,10 @@
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>choices</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>selected</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>inline</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>inline</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>choiceNames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>choiceValues</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -237,7 +240,7 @@ Vector of names and values, must have same length.</p></td>
       <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/tableOutput.html'>tableOutput</a></span>(<span class='st'>"data3"</span>)
     ),
     <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/column.html'>column</a></span>(<span class='fl'>3</span>,
-    <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/actionButton.html'>actionButton</a></span>(<span class='st'>"btn4"</span>, <span class='st'>"Set to transmission and gear"</span>),
+    <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/actionButton.html'>actionButton</a></span>(<span class='st'>"btn4"</span>, <span class='st'>"Update everything (see source code for details)"</span>),
       <span class='fu'>sa_checkboxgroup</span>(
         <span class='st'>"cb4"</span>, <span class='st'>"SA2 - Variables to show:"</span>,
         <span class='kw'>selected</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cyl"</span>, <span class='st'>"am"</span>), <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"firebrick"</span>,
@@ -269,10 +272,17 @@ Vector of names and values, must have same length.</p></td>
     <span class='fu'>updateCheckboxgroup</span>(<span class='no'>session</span>, <span class='st'>"cb1"</span>, <span class='kw'>selected</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(<span class='fl'>0</span>))
   })
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>btn3</span>, {
-    <span class='fu'>update_sa_checkboxgroup</span>(<span class='no'>session</span>, <span class='st'>"cb3"</span>, <span class='kw'>selected</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(<span class='fl'>0</span>))
+    <span class='fu'>update_sa_checkboxgroup</span>(<span class='no'>session</span>, <span class='st'>"cb3"</span>,
+      <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"New title!"</span>, <span class='kw'>selected</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cyl"</span>, <span class='st'>"a"</span>)
+    )
   })
   <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/observeEvent.html'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>btn4</span>, {
-    <span class='fu'>update_sa_checkboxgroup</span>(<span class='no'>session</span>, <span class='st'>"cb4"</span>, <span class='kw'>selected</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"am"</span>, <span class='st'>"gear"</span>))
+    <span class='fu'>update_sa_checkboxgroup</span>(<span class='no'>session</span>, <span class='st'>"cb4"</span>,
+      <span class='kw'>label</span> <span class='kw'>=</span> <span class='st'>"New title!"</span>,
+      <span class='kw'>choices</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"am"</span>, <span class='st'>"gear"</span>, <span class='st'>"hello world"</span>),
+      <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+      <span class='kw'>selected</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"am"</span>, <span class='st'>"gear"</span>)
+    )
   })
 }
 
