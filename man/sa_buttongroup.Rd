@@ -39,6 +39,8 @@ other types (such as logicals and numbers) will be coerced to strings.}
 \item{selected}{The radio value that should be initially selected; or
 checkbox group values, if any.}
 
+\item{multiple}{logical, allow multiple selections.}
+
 \item{color}{character, hex or R color name.}
 
 \item{width}{not in use}

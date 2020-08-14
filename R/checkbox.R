@@ -53,7 +53,7 @@ sa_checkbox <- function(inputId, label, value = FALSE, color = "#555555",
   id <- paste0("sa-input-checkbox-", inputId)
   inputTag <- tags$input(id = id, type = "checkbox")
   if(!is.null(value) && value) inputTag$attribs$checked <- "checked"
-  x <- div(id = inputId, class = "sa-input-checkbox",
+  x <- shiny::div(id = inputId, class = "sa-input-checkbox",
     tagList(inputTag, tags$label(`for` = id, label))
   )
   tagList(

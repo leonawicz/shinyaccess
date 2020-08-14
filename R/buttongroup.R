@@ -15,6 +15,7 @@
 #' other types (such as logicals and numbers) will be coerced to strings.
 #' @param selected The radio value that should be initially selected; or
 #' checkbox group values, if any.
+#' @param multiple logical, allow multiple selections.
 #' @param color character, hex or R color name.
 #' @param width not in use
 #' @param choiceNames,choiceValues See \code{shiny::checkboxgroup}.
@@ -87,7 +88,7 @@ sa_buttongroup <- function(inputId, label, choices = NULL, selected = NULL,
   }
   tagList(
     # attach styles like background color,
-    div(x, class = "sa-buttongroup")
+    shiny::div(x, class = "sa-buttongroup")
   )
 }
 
