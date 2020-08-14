@@ -12,15 +12,13 @@ $.extend(saCheckboxGroupBinding, {
     return values;
   },
   setValue: function(el, value) {
+    // Clear all checkboxes
     $(el).find('input').prop('checked', false);
+    // Loop through which checkboxes should be checked based on the value array and update the checkbox
     let inputElements = Array.from($(el).find('input'));
     for(let i = 0; i < inputElements.length; i++){
-      if (value instanceof Array) {
-        for(let j = 0; j < value.length; j++){
-          if(inputElements[i].value === value[j]) inputElements[i].checked = true;
-        }
-      } else {
-        if(inputElements[i].value === value) inputElements[i].checked = true;
+      for(let j = 0; j < value.length; j++){
+        if(inputElements[i].value === value[j]) inputElements[i].checked = true;
       }
     }
   },
@@ -28,11 +26,14 @@ $.extend(saCheckboxGroupBinding, {
     $(el).find('legend').text(label);
   },
   receiveMessage: function(el, data) {
-    // If exists, then setValue below does not need to be called (redundant)
+    console.log('receiveMessage', el)
+    // If data.options exist, replace all the options with new ones
     if (data.hasOwnProperty('options')) {
       $(el).find('.sa-options-group').remove();
       $(el,"> legend").append(data.options);
-    } else if(data.hasOwnProperty('value')) this.setValue(el, data.value);
+    }
+    // If data.value exists, update what values are checked or not checked
+    if(data.hasOwnProperty('value')) this.setValue(el, data.value);
     //If data.label exists, update the legend element
     if(data.hasOwnProperty('label')) this.updateLabel(el, data.label);
 
