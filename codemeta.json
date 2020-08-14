@@ -85,7 +85,7 @@
   ],
   "releaseNotes": "https://github.com/leonawicz/shinyaccess/blob/master/NEWS.md",
   "readme": "https://github.com/leonawicz/shinyaccess/blob/master/README.md",
-  "fileSize": "523.861KB",
+  "fileSize": "523.991KB",
   "contIntegration": ["https://travis-ci.org/ropensci/shinyaccess", "https://ci.appveyor.com/project/leonawicz/shinyaccess", "https://codecov.io/gh/ropensci/shinyaccess?branch=master"],
   "developmentStatus": "http://www.repostatus.org/#active",
   "keywords": [

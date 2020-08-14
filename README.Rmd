@@ -18,13 +18,13 @@ library(shinyaccess)
 **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Travis build status](https://travis-ci.org/ropensci/shinyaccess.svg?branch=master)](https://travis-ci.org/ropensci/shinyaccess)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/shinyaccess?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/shinyaccess)
-[![Codecov test coverage](https://codecov.io/gh/ropensci/shinyaccess/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/shinyaccess?branch=master)
+[![Travis build status](https://travis-ci.org/leonawicz/shinyaccess.svg?branch=master)](https://travis-ci.org/leonawicz/shinyaccess)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/shinyaccess?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/shinyaccess)
+[![Codecov test coverage](https://codecov.io/gh/leonawicz/shinyaccess/branch/master/graph/badge.svg)](https://codecov.io/gh/leonawicz/shinyaccess?branch=master)
 
 [![CRAN status](http://www.r-pkg.org/badges/version/shinyaccess)](https://cran.r-project.org/package=shinyaccess)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/shinyaccess)](https://cran.r-project.org/package=shinyaccess)
-[![Github Stars](https://img.shields.io/github/stars/ropensci/shinyaccess.svg?style=social&label=Github)](https://github.com/ropensci/shinyaccess)
+[![Github Stars](https://img.shields.io/github/stars/leonawicz/shinyaccess.svg?style=social&label=Github)](https://github.com/leonawicz/shinyaccess)
 
 The `shinyaccess` package provides functions for enhancing web accessibility in Shiny apps.
 
