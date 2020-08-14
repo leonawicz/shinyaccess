@@ -21,8 +21,7 @@ coverage](https://codecov.io/gh/leonawicz/shinyaccess/branch/master/graph/badge.
 
 [![CRAN
 status](http://www.r-pkg.org/badges/version/shinyaccess)](https://cran.r-project.org/package=shinyaccess)
-[![CRAN RStudio mirror
-downloads](http://cranlogs.r-pkg.org/badges/shinyaccess)](https://cran.r-project.org/package=shinyaccess)
+<!-- [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/shinyaccess)](https://cran.r-project.org/package=shinyaccess) -->
 [![Github
 Stars](https://img.shields.io/github/stars/leonawicz/shinyaccess.svg?style=social&label=Github)](https://github.com/leonawicz/shinyaccess)
 
