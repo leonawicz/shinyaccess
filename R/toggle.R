@@ -12,7 +12,7 @@
 #' @param false character, right label for \code{FALSE} state.
 #' @param color active state color.
 #' @param text_color color of left and right value label text.
-#' @param width The width of the input, e.g. \code{'400px'}, or \code{'100%'};
+#' @param width The width of the input, e.g. \code{'400px'}, or \code{'100\%'};
 #' see \code{shiny::validateCssUnit}.
 #' @param session The session object passed to function given to shinyServer.
 #'

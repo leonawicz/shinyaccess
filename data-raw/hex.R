@@ -2,10 +2,8 @@
 library(hexSticker)
 library(ggplot2)
 pkg <- basename(getwd())
-user <- "leonawicz"
-account <- "github"
 
-url <- paste0(user, ".", account, ".io/", pkg)
+url <- "github.com/leonawicz/shinyaccess"
 out <- paste0("man/figures/logo.png")
 dir.create("man/figures", showWarnings = FALSE)
 
