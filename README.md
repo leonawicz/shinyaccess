@@ -31,28 +31,12 @@ accessibility in Shiny apps.
 
 ## Installation
 
-You can install the released version of `shinyaccess` from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("shinyaccess")
-```
-
 You can install the development version of `shinyaccess` from GitHub
 with:
 
 ``` r
 # install.packages("remotes")
 remotes::install_github("leonawicz/shinyaccess")
-```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(shinyaccess)
-## basic example code
 ```
 
 -----

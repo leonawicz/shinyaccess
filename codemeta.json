@@ -14,10 +14,9 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.1",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.1 (2019-07-05)",
+  "runtimePlatform": "R version 4.0.2 (2020-06-22)",
   "author": [
     {
       "@type": "Person",
@@ -33,18 +32,8 @@
     }
   ],
   "contributor": {},
-  "copyrightHolder": [
-    {
-      "@type": "Organization",
-      "name": "E Source"
-    }
-  ],
-  "funder": [
-    {
-      "@type": "Organization",
-      "name": "E Source"
-    }
-  ],
+  "copyrightHolder": {},
+  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
@@ -96,12 +85,8 @@
   ],
   "releaseNotes": "https://github.com/leonawicz/shinyaccess/blob/master/NEWS.md",
   "readme": "https://github.com/leonawicz/shinyaccess/blob/master/README.md",
-  "fileSize": "11.714KB",
-  "contIntegration": [
-    "https://travis-ci.org/ropensci/shinyaccess",
-    "https://ci.appveyor.com/project/leonawicz/shinyaccess",
-    "https://codecov.io/gh/ropensci/shinyaccess?branch=master"
-  ],
+  "fileSize": "523.82KB",
+  "contIntegration": ["https://travis-ci.org/ropensci/shinyaccess", "https://ci.appveyor.com/project/leonawicz/shinyaccess", "https://codecov.io/gh/ropensci/shinyaccess?branch=master"],
   "developmentStatus": "http://www.repostatus.org/#active",
   "keywords": [
     "r-package",
